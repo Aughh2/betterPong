@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=3 uid="uid://c04xto1860x85"]
+
+[ext_resource type="PackedScene" uid="uid://doqy5hmqq1jd2" path="res://Scenes/player.tscn" id="1_8juqs"]
+[ext_resource type="PackedScene" uid="uid://desqw6uri1nvl" path="res://Scenes/ball.tscn" id="2_s2mji"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8juqs"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pkatj"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_lpde8"]
+material = SubResource("StandardMaterial3D_pkatj")
+size = Vector3(640, 360, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s2mji"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8juqs"]
+
+[node name="Field" type="StaticBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("WorldBoundaryShape2D_8juqs")
+disabled = true
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+mesh = SubResource("BoxMesh_lpde8")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Ball" parent="." instance=ExtResource("2_s2mji")]
+
+[node name="RightBorder" type="CollisionShape2D" parent="."]
+position = Vector2(330, 0)
+scale = Vector2(1, 18)
+shape = SubResource("RectangleShape2D_s2mji")
+
+[node name="LeftBorder" type="CollisionShape2D" parent="."]
+position = Vector2(-330, 0)
+scale = Vector2(1, 18)
+shape = SubResource("RectangleShape2D_s2mji")
+
+[node name="TopBorder" type="CollisionShape2D" parent="."]
+position = Vector2(0, -190)
+scale = Vector2(32, 1)
+shape = SubResource("RectangleShape2D_8juqs")
+
+[node name="BottomBorder" type="CollisionShape2D" parent="."]
+position = Vector2(0, 190)
+scale = Vector2(32, 1)
+shape = SubResource("RectangleShape2D_8juqs")
+
+[node name="Player" parent="." instance=ExtResource("1_8juqs")]
+position = Vector2(-250, 0)
+
+[node name="Player2" parent="." instance=ExtResource("1_8juqs")]
+position = Vector2(250, 0)

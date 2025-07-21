@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://cw6hedq4imb64"]
+
+[node name="PeddleInputHandler" type="Node2D"]

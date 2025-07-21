@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://h043ik300x0g"]
+
+[node name="SkillComponent" type="Node2D"]

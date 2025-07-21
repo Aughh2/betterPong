@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://cp3a2wdxxbc4m"]
+
+[node name="SpeedComponent" type="Node2D"]

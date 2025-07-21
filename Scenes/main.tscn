@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://dfmywqgx7r5vo"]
+
+[ext_resource type="Script" uid="uid://yvin7qpiqpde" path="res://Scripts/Managers/main.gd" id="1_jjvhh"]
+[ext_resource type="PackedScene" uid="uid://c7xvur5j38so6" path="res://Scenes/game_state_manager.tscn" id="2_21xkr"]
+[ext_resource type="Script" uid="uid://4edw0rt2bmxn" path="res://Scripts/Managers/scene_manager.gd" id="2_kry3j"]
+[ext_resource type="PackedScene" uid="uid://c04xto1860x85" path="res://Scenes/field.tscn" id="3_jjvhh"]
+[ext_resource type="Script" uid="uid://dvji3e4nfkvvu" path="res://Scripts/Managers/player_manager.gd" id="4_6bp64"]
+[ext_resource type="Script" uid="uid://cr2uw8bel6yhv" path="res://Scripts/Managers/ball_spawner_manager.gd" id="5_kry3j"]
+
+[node name="Main" type="Node" node_paths=PackedStringArray("SceneManager", "PlayerManager", "FieldManager", "BallSpawnerManager")]
+script = ExtResource("1_jjvhh")
+SceneManager = NodePath("SceneManager")
+PlayerManager = NodePath("PlayerManager")
+FieldManager = NodePath("FieldManager")
+BallSpawnerManager = NodePath("BallSpawnerManager")
+
+[node name="GameStateManager" parent="." instance=ExtResource("2_21xkr")]
+
+[node name="SceneManager" type="Node" parent="."]
+script = ExtResource("2_kry3j")
+default_scene = ExtResource("3_jjvhh")
+
+[node name="PlayerManager" type="Node" parent="."]
+script = ExtResource("4_6bp64")
+
+[node name="FieldManager" type="Node" parent="."]
+
+[node name="BallSpawnerManager" type="Node" parent="."]
+script = ExtResource("5_kry3j")
+
+[node name="AudioManager" type="Node" parent="."]
+
+[node name="UIManager" type="Node" parent="."]
+
+[node name="SaveManager" type="Node" parent="."]
+
+[node name="RulesManager" type="Node" parent="."]
+
+[node name="CameraManager" type="Node" parent="."]

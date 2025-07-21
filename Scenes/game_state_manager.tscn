@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7xvur5j38so6"]
+
+[ext_resource type="Script" uid="uid://c6u640nv1k617" path="res://Scripts/Game State Management/game_state_manager.gd" id="1_yqiuo"]
+[ext_resource type="Script" uid="uid://dhje5nqtss4x0" path="res://Scripts/menu_state.gd" id="2_ixa7f"]
+
+[node name="GameStateManager" type="Node" node_paths=PackedStringArray("initial_state")]
+script = ExtResource("1_yqiuo")
+initial_state = NodePath("Menu_state")
+
+[node name="Menu_state" type="Node" parent="."]
+script = ExtResource("2_ixa7f")
+
+[node name="Settings_state" type="Node" parent="."]
+
+[node name="Playing_state" type="Node" parent="."]
+
+[node name="Paused_state" type="Node" parent="."]
