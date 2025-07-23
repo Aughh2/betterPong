@@ -1,4 +1,4 @@
-extends Resource
+extends PeddleComponent
 class_name SpriteComponent
 
 var _sprite: Sprite2D

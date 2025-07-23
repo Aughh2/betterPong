@@ -1,4 +1,4 @@
-extends Resource
+extends PeddleComponent
 class_name SpeedComponent
 
 @export var _speed: float

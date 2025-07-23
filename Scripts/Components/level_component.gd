@@ -1,4 +1,4 @@
-extends Resource
+extends PeddleComponent
 class_name LevelComponent
 
 var _level: int = 0

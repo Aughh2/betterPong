@@ -7,8 +7,17 @@ class_name Peddle
 @export var skill_component: SkillComponent
 @export var speed_component: SpeedComponent
 @export var sprite_component: SpriteComponent
-var controller: PeddleController = null
+@export var controller: PeddleController = null
 
+func _ready() -> void:
+	health_component = HealthComponent.new(self)
+	level_component = LevelComponent.new(self)
+	skill_component = SkillComponent.new(self)
+	speed_component = SpeedComponent.new(self)
+	sprite_component = SpriteComponent.new(self)
+	
+	health_component.damaged.connect(_on_damaged)
+	health_component.died.connect(_on_died)
 
 var _vertical_input: float
 
@@ -30,3 +39,8 @@ func set_controller(controller: PeddleController) -> void:
 func move(value: float) -> void:
 	_vertical_input = value
 	
+func _on_damaged(amount: float) -> void:
+	EventBus.health_changed.emit(self, health_component.get_health())
+	
+func _on_died() -> void:
+	EventBus.peddle_died.emit(self)

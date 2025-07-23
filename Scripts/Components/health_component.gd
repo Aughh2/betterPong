@@ -1,27 +1,32 @@
-extends Resource
+extends PeddleComponent
 class_name HealthComponent
 
 
 @export var max_health: float = 100
-@export var health: float
+var _health: float
+
+signal damaged(amount: float)
+signal died()
 
 func _ready() -> void:
-	health = max_health
+	_health = max_health
+
+func get_health() -> float:
+	return _health
 	
 func heal(amount: float) -> void:
 	if amount < 0:
 		pass
-	if (health + amount) <= max_health:
-		health += amount
+	if (_health + amount) <= max_health:
+		_health += amount
 	else:
-		health = max_health
+		_health = max_health
 
 func take_damage(amount: float) -> void:
-	if amount < 0:
-		pass
-	if (health - amount) <= 0:
-		health = 0
-	else:
-		health -= amount
+	if amount <= 0: return
+	_health = max(_health - amount, 0)
+	emit_signal("damaged", amount)
+	if _health == 0:
+		emit_signal("died")
 	
 	

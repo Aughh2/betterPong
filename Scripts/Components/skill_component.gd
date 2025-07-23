@@ -1,4 +1,4 @@
-extends Resource
+extends PeddleComponent
 class_name SkillComponent
 
 var _attack: int
