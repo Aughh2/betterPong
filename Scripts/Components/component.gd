@@ -1,5 +1,5 @@
-extends Node
-class_name Component
+extends Resource
+class_name PeddleComponent
 
 var parent: Peddle
 

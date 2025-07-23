@@ -5,5 +5,6 @@ var peddle: Peddle
 
 var move_command: Command = MoveCommand.new()
 
-func _init(peddle: Peddle) -> void:
+func setup(peddle: Peddle) -> void:
 	self.peddle = peddle
+	peddle.set_controller(self)

@@ -1,7 +1,7 @@
 extends Resource
 class_name LevelComponent
 
-var _level: int
+var _level: int = 0
 
 func level_up() -> void:
 	_level += 1
