@@ -35,5 +35,6 @@ func create_borders(field: Field) -> void:
 			"left", "right":
 				shape.extents = Vector2(BORDER_THICKNESS / 2, half_height)
 
-		border.shape = shape
+		border.set_shape(shape)
+
 		

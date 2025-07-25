@@ -16,9 +16,11 @@ func _ready() -> void:
 	speed_component = SpeedComponent.new(self)
 	sprite_component = SpriteComponent.new(self)
 	
-	health_component.damaged.connect(_on_damaged)
-	health_component.died.connect(_on_died)
-
+	health_component.damaged.connect(_on_peddle_damaged)
+	health_component.died.connect(_on_peddle_died)
+	
+	level_component.level_upped.connect(_on_peddle_level_upped)
+	
 var _vertical_input: float
 
 func _physics_process(delta: float) -> void:
@@ -39,8 +41,11 @@ func set_controller(controller: PeddleController) -> void:
 func move(value: float) -> void:
 	_vertical_input = value
 	
-func _on_damaged(amount: float) -> void:
+func _on_peddle_damaged(amount: float) -> void:
 	EventBus.health_changed.emit(self, health_component.get_health())
 	
-func _on_died() -> void:
+func _on_peddle_died() -> void:
 	EventBus.peddle_died.emit(self)
+
+func _on_peddle_level_upped(new_level: int) -> void:
+	EventBus.level_up.emit(new_level)

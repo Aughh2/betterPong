@@ -1,0 +1,2 @@
+extends PeddleComponent
+class_name EffectsComponent
