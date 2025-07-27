@@ -1,4 +1,4 @@
-extends PeddleComponent
+extends Component
 class_name HealthComponent
 
 

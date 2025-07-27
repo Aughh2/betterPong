@@ -2,10 +2,18 @@ extends CharacterBody2D
 class_name Ball
 
 var _parent: Peddle = null # A reference to a peddle that hit it last
-var _speed: float = 250.0
+@export var speed_component: SpeedComponent
+@export var sprite_component: SpriteComponent
+@export var collision_component: CollisionShapeComponent
 
-func _ready():
-	velocity = Vector2(-200, -200).normalized() * _speed
+func setup():
+	if speed_component == null:
+		speed_component = SpeedComponent.new(self)
+	if sprite_component == null:
+		sprite_component = SpriteComponent.new(self)
+	if collision_component == null:
+		collision_component = CollisionShapeComponent.new(self)
+	velocity = Vector2(-200, -200).normalized() * speed_component.get_speed()
 	
 func _physics_process(delta: float) -> void:
 	var collision = move_and_collide(velocity * delta)

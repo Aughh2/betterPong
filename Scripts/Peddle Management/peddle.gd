@@ -7,20 +7,29 @@ class_name Peddle
 @export var skill_component: SkillComponent
 @export var speed_component: SpeedComponent
 @export var sprite_component: SpriteComponent
+@export var collision_component: CollisionShapeComponent
+
 @export var controller: PeddleController = null
 
-func _ready() -> void:
-	health_component = HealthComponent.new(self)
-	level_component = LevelComponent.new(self)
-	skill_component = SkillComponent.new(self)
-	speed_component = SpeedComponent.new(self)
-	sprite_component = SpriteComponent.new(self)
-	
+func setup() -> void:
+	if health_component == null:
+		health_component = HealthComponent.new(self)
+	if level_component == null:
+		level_component = LevelComponent.new(self)
+	if skill_component == null:
+		skill_component = SkillComponent.new(self)
+	if speed_component == null:
+		speed_component = SpeedComponent.new(self)
+	if sprite_component == null:
+		sprite_component = SpriteComponent.new(self)
+	if collision_component == null:
+		collision_component = CollisionShapeComponent.new(self)
+
+	# Setup signals
 	health_component.damaged.connect(_on_peddle_damaged)
 	health_component.died.connect(_on_peddle_died)
-	
 	level_component.level_upped.connect(_on_peddle_level_upped)
-	
+
 var _vertical_input: float
 
 func _physics_process(delta: float) -> void:

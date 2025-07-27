@@ -1,4 +1,4 @@
-extends Resource
+extends Component
 class_name BordersComponent
 
 var borders = Array[Border]

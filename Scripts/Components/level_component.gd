@@ -1,4 +1,4 @@
-extends PeddleComponent
+extends Component
 class_name LevelComponent
 
 signal level_upped(new_level: int)
