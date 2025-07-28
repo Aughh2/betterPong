@@ -24,7 +24,7 @@ func create_borders(field: Field) -> void:
 
 	for side in borders.keys():
 		var border = Border.new()
-		field.add_child(border)
+		field.add_child(border) # will be added to field's border component instead.
 		border.name = "Border_" + side.capitalize()
 		border.position = borders[side]
 

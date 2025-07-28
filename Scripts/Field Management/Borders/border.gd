@@ -1,11 +1,12 @@
 extends Area2D
 class_name Border
 
-signal hit(ball: Node) ###CHANGE TO BALL WHEN CLASS COMPLETED
+signal hit(ball: Ball) ###CHANGE TO BALL WHEN CLASS COMPLETED
 
 var _active: bool = false
 var parent: Peddle = null
 var collision_shape: CollisionShape2D
+var collision_component: CollisionShapeComponent
 
 func _ready() -> void:
 	collision_shape = CollisionShape2D.new()
