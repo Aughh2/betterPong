@@ -10,6 +10,9 @@ func _init(width: float, height: float, mesh: MeshInstance2D) -> void:
 	_height = height
 	_mesh = mesh
 	add_child(_mesh)
+	
+	if borders_component == null:
+		borders_component = BordersComponent.new(self)
 
 func get_width() -> float:
 	return _width

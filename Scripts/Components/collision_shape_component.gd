@@ -16,3 +16,8 @@ func set_circle_shape(radius: float):
 
 func get_shape() -> CollisionShape2D:
 	return _shape
+
+func get_shape_node() -> CollisionShape2D:
+	var shape_node = CollisionShape2D.new()
+	shape_node.shape = _shape
+	return shape_node

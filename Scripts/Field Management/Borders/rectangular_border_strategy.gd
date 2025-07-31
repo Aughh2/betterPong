@@ -24,17 +24,16 @@ func create_borders(field: Field) -> void:
 
 	for side in borders.keys():
 		var border = Border.new()
-		field.add_child(border) # will be added to field's border component instead.
 		border.name = "Border_" + side.capitalize()
 		border.position = borders[side]
 
-		var shape = RectangleShape2D.new()
+		var size: Vector2
 		match side:
 			"top", "bottom":
-				shape.extents = Vector2(half_width, BORDER_THICKNESS / 2)
+				size = Vector2(width, BORDER_THICKNESS)
 			"left", "right":
-				shape.extents = Vector2(BORDER_THICKNESS / 2, half_height)
+				size = Vector2(BORDER_THICKNESS, height)
 
-		border.set_shape(shape)
-
-		
+		border.collision_component.set_rectangle_shape(size)
+		#rect_field.add_child(border) #For physics interactions
+		rect_field.borders_component.add_border(border, true)

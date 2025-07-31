@@ -1,35 +1,50 @@
 extends Area2D
 class_name Border
 
-signal hit(ball: Ball) ###CHANGE TO BALL WHEN CLASS COMPLETED
+# Signal emitted when a Ball enters this border (will be used once Ball is implemented)
+signal hit(ball: Ball)
 
+# Whether this border is active for collision response
 var _active: bool = false
+
+# Reference to the Peddle that owns/activated this border (for context)
 var parent: Peddle = null
-var collision_shape: CollisionShape2D
-var collision_component: CollisionShapeComponent
+
+# Collision component that holds the shape data for this border
+@export var collision_component: CollisionShapeComponent
 
 func _ready() -> void:
-	collision_shape = CollisionShape2D.new()
-	add_child(collision_shape)
+	# If not already assigned in the editor or factory, create a new collision component
+	if collision_component == null:
+		collision_component = CollisionShapeComponent.new(self)
+
+	# ⚠️ IMPORTANT:
+	# Godot's physics engine *requires* a CollisionShape2D node to be present in the scene tree
+	# even if we already have the shape data in a component.
+	# So we ask the component to generate a CollisionShape2D node with the stored shape,
+	# and we manually add it to this Area2D node.
+	var shape_node = collision_component.get_shape_node()
+	add_child(shape_node)
+
+	# Connect the built-in signal to handle when a body enters the Area2D
 	connect("body_entered", _on_body_entered)
 
-func set_shape(shape: Shape2D) -> void:
-	if collision_shape == null:
-		collision_shape = CollisionShape2D.new()
-		add_child(collision_shape)
-	collision_shape.shape = shape
-
 func activate(peddle: Peddle) -> void:
+	# Activate this border and store the owning Peddle (used to emit context-aware signals)
 	if peddle != null:
 		parent = peddle
 		_active = true
 	else:
+		# Log in case we ever forget to pass a valid Peddle
 		Log.entry(get_class() + " peddle reference is null.")
 
 func deactivate() -> void:
+	# Deactivate the border and clear the parent reference
 	_active = false
 	parent = null
 
 func _on_body_entered(body: Node) -> void:
+	# Only emit the signal if the border is active
 	if _active:
+		# Notify listeners (e.g., game logic) that a body (likely the ball) hit this border
 		emit_signal("hit", body)
