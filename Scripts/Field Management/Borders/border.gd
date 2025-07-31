@@ -23,8 +23,7 @@ func _ready() -> void:
 	# even if we already have the shape data in a component.
 	# So we ask the component to generate a CollisionShape2D node with the stored shape,
 	# and we manually add it to this Area2D node.
-	var shape_node = collision_component.get_shape_node()
-	add_child(shape_node)
+	collision_component.add_collision_shape_to_owner_scene_tree()
 
 	# Connect the built-in signal to handle when a body enters the Area2D
 	connect("body_entered", _on_body_entered)

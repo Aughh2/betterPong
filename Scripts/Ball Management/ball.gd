@@ -13,6 +13,8 @@ func setup():
 		sprite_component = SpriteComponent.new(self)
 	if collision_component == null:
 		collision_component = CollisionShapeComponent.new(self)
+	collision_component.add_collision_shape_to_owner_scene_tree()
+	
 	velocity = Vector2(-200, -200).normalized() * speed_component.get_speed()
 	
 func _physics_process(delta: float) -> void:
