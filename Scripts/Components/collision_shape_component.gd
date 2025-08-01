@@ -4,6 +4,9 @@ class_name CollisionShapeComponent
 var _shape_node: CollisionShape2D
 var _shape: Shape2D
 
+func setup() -> void:
+	add_collision_shape_to_owner_scene_tree()
+	
 func set_rectangle_shape(size: Vector2):
 	var shape = RectangleShape2D.new()
 	shape.size = size

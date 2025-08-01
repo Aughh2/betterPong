@@ -13,7 +13,9 @@ func setup():
 		sprite_component = SpriteComponent.new(self)
 	if collision_component == null:
 		collision_component = CollisionShapeComponent.new(self)
-	collision_component.add_collision_shape_to_owner_scene_tree()
+	speed_component.setup()
+	sprite_component.setup()
+	collision_component.setup()
 	
 	velocity = Vector2(-200, -200).normalized() * speed_component.get_speed()
 	

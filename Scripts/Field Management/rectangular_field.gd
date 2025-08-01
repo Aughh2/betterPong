@@ -13,7 +13,8 @@ func _init(width: float, height: float, mesh: MeshInstance2D) -> void:
 	
 	if borders_component == null:
 		borders_component = BordersComponent.new(self)
-
+	borders_component.setup()
+	
 func get_width() -> float:
 	return _width
 

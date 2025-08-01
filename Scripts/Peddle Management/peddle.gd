@@ -25,7 +25,13 @@ func setup() -> void:
 	if collision_component == null:
 		collision_component = CollisionShapeComponent.new(self)
 	
-	collision_component.add_collision_shape_to_owner_scene_tree()
+	health_component.setup()
+	level_component.setup()
+	skill_component.setup()
+	speed_component.setup()
+	sprite_component.setup()
+	collision_component.setup()
+	
 	# Setup signals
 	health_component.damaged.connect(_on_peddle_damaged)
 	health_component.died.connect(_on_peddle_died)

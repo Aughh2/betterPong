@@ -8,7 +8,7 @@ signal hit(ball: Ball)
 var _active: bool = false
 
 # Reference to the Peddle that owns/activated this border (for context)
-var parent: Peddle = null
+var owning_peddle: Peddle = null
 
 # Collision component that holds the shape data for this border
 @export var collision_component: CollisionShapeComponent
@@ -31,7 +31,7 @@ func _ready() -> void:
 func activate(peddle: Peddle) -> void:
 	# Activate this border and store the owning Peddle (used to emit context-aware signals)
 	if peddle != null:
-		parent = peddle
+		owning_peddle = peddle
 		_active = true
 	else:
 		# Log in case we ever forget to pass a valid Peddle
@@ -40,7 +40,7 @@ func activate(peddle: Peddle) -> void:
 func deactivate() -> void:
 	# Deactivate the border and clear the parent reference
 	_active = false
-	parent = null
+	owning_peddle = null
 
 func _on_body_entered(body: Node) -> void:
 	# Only emit the signal if the border is active

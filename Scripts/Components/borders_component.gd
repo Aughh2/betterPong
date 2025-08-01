@@ -3,6 +3,9 @@ class_name BordersComponent
 
 var _borders: Array[Border] = []
 
+func setup() -> void:
+	pass
+	
 func add_border(border: Border, add_to_scene_tree: bool = false) -> void:
 	_borders.append(border)
 	if add_to_scene_tree:

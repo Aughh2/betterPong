@@ -3,6 +3,9 @@ class_name SpeedComponent
 
 @export var _speed: float = 250.0
 
+func setup() -> void:
+	pass
+	
 func set_speed(value: float) -> void:
 	if value > 0:
 		_speed = value

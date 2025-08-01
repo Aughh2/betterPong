@@ -5,6 +5,9 @@ signal level_upped(new_level: int)
 
 var _level: int = 0
 
+func setup() -> void:
+	pass
+	
 func level_up() -> void:
 	_level += 1
 	level_upped.emit(_level)

@@ -8,7 +8,7 @@ var _health: float
 signal damaged(amount: float)
 signal died()
 
-func _ready() -> void:
+func setup() -> void:
 	_health = max_health
 
 func get_health() -> float:

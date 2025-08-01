@@ -5,6 +5,9 @@ var _attack: int
 var _defense: int
 var _control: int
 
+func setup() -> void:
+	pass
+	
 func add_points(attack: int = 0, defense: int = 0, control: int = 0) -> void:
 	if attack > 0:
 		_attack += attack
