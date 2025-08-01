@@ -35,5 +35,4 @@ func create_borders(field: Field) -> void:
 				size = Vector2(BORDER_THICKNESS, height)
 
 		border.collision_component.set_rectangle_shape(size)
-		#rect_field.add_child(border) #For physics interactions
 		rect_field.borders_component.add_border(border, true)

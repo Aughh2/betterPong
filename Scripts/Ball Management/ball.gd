@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Ball
 
-var _parent: Peddle = null # A reference to a peddle that hit it last
+var _last_hitting_peddle: Peddle = null # A reference to a peddle that hit it last
 @export var speed_component: SpeedComponent
 @export var sprite_component: SpriteComponent
 @export var collision_component: CollisionShapeComponent
@@ -24,4 +24,4 @@ func _physics_process(delta: float) -> void:
 	if collision:
 		velocity = velocity.bounce(collision.get_normal())
 		if collision.get_collider() is Peddle:
-			_parent = collision.get_collider()
+			_last_hitting_peddle = collision.get_collider()
