@@ -9,7 +9,8 @@ func create_ball() -> Ball:
 	var speed_component = SpeedComponent.new(ball)
 	var collision_component = CollisionShapeComponent.new(ball)
 	sprite_component.set_sprite_from_texture(basic_ball)
-	speed_component.set_speed(250)
+	speed_component.set_speed(10)
+	ball.sprite_component = sprite_component
+	ball.speed_component = speed_component
+	ball.collision_component = collision_component
 	return ball
-	
-	

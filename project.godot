@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 Main="*res://Scenes/main.tscn"
 Log="*res://addons/GoLogger/Log.tscn"
 EventBus="*res://Scripts/Event Bus/event_bus.gd"
+UiController="*res://Scripts/UI Management/ui_controller.gd"
 
 [display]
 

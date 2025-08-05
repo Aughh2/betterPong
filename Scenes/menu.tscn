@@ -1,3 +1,14 @@
 [gd_scene format=3 uid="uid://dgy3plyokhfq3"]
 
-[node name="Menu" type="Node2D"]
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="StartButton" type="Button" parent="."]
+offset_left = 163.0
+offset_top = 89.0
+offset_right = 240.0
+offset_bottom = 132.0
+toggle_mode = true
+button_pressed = true
+text = "Start"
