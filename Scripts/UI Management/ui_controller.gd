@@ -9,11 +9,15 @@ func _ready() -> void:
 func setup() -> void:
 	pass
 	
+var current_menu: Node = null
+
 func show_menu() -> void:
-	var menu = menu_scene.instantiate()
-	add_child(menu)
+	if current_menu:
+		current_menu.queue_free()
+	current_menu = menu_scene.instantiate()
+	add_child(current_menu)
 
 func hide_menu() -> void:
-	for child in get_children():
-		if child.name == menu_scene.resource_name:
-			child.free()
+	if current_menu:
+		current_menu.queue_free()
+		current_menu = null

@@ -1,9 +1,9 @@
 extends State
 class_name MenuState
 
-
-signal menu_entered()
+signal new_game_button_pressed()
+signal load_game_button_pressed()
+signal settings_button_pressed()
 
 func enter():
-	EventBus.menu_entered.emit()
-	
+	EventBus.main_menu_entered.emit()

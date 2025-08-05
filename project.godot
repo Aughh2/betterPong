@@ -20,6 +20,7 @@ Main="*res://Scenes/main.tscn"
 Log="*res://addons/GoLogger/Log.tscn"
 EventBus="*res://Scripts/Event Bus/event_bus.gd"
 UiController="*res://Scripts/UI Management/ui_controller.gd"
+GameDataManager="*res://Scripts/Data Containers/game_data.gd"
 
 [display]
 
