@@ -1,10 +1,14 @@
-[gd_scene format=3 uid="uid://dgy3plyokhfq3"]
+[gd_scene load_steps=2 format=3 uid="uid://dgy3plyokhfq3"]
 
-[node name="Menu" type="Control"]
+[ext_resource type="Script" uid="uid://cuqnggbg0x0qk" path="res://Scripts/Game State Management/Menus/main_menu.gd" id="1_1rerr"]
+
+[node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 0
+script = ExtResource("1_1rerr")
 
-[node name="StartButton" type="Button" parent="."]
+[node name="NewGameButton" type="Button" parent="."]
+layout_mode = 0
 offset_left = 163.0
 offset_top = 89.0
 offset_right = 240.0
@@ -12,3 +16,28 @@ offset_bottom = 132.0
 toggle_mode = true
 button_pressed = true
 text = "Start"
+
+[node name="LoadGameButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 163.0
+offset_top = 89.0
+offset_right = 240.0
+offset_bottom = 132.0
+toggle_mode = true
+button_pressed = true
+text = "Start"
+
+[node name="SettingsButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 163.0
+offset_top = 89.0
+offset_right = 240.0
+offset_bottom = 132.0
+toggle_mode = true
+button_pressed = true
+text = "Start"
+
+[node name="QuitButton" type="Button" parent="."]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0

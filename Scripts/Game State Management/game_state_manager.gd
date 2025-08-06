@@ -8,4 +8,5 @@ func _ready() -> void:
 	sm.init(self)
 
 func _process(delta: float) -> void:
-	sm.process_frame(delta)
+	if sm:
+		sm.process_frame(delta)
