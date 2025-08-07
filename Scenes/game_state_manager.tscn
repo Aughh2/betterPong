@@ -5,10 +5,12 @@
 
 [node name="GameStateManager" type="Node" node_paths=PackedStringArray("initial_state")]
 script = ExtResource("1_yqiuo")
-initial_state = NodePath("Menu_state")
+initial_state = NodePath("Main_menu_state")
 
-[node name="Menu_state" type="Node" parent="."]
+[node name="Main_menu_state" type="Node" parent="."]
 script = ExtResource("2_ixa7f")
+
+[node name="Peddle_creation_state" type="Node" parent="."]
 
 [node name="Settings_state" type="Node" parent="."]
 
