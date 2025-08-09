@@ -36,7 +36,8 @@ enabled=PackedStringArray("res://addons/GoLogger/plugin.cfg")
 
 folder_colors={
 "res://Scenes/": "green",
-"res://Scripts/": "red"
+"res://Scripts/": "red",
+"res://Sprites/": "blue"
 }
 
 [input]

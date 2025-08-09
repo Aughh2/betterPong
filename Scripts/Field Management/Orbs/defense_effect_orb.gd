@@ -4,7 +4,7 @@ class_name DefenseEffectOrb
 
 func _ready() -> void:
 	setup()
-	self.category = "Defense"
+	self.category = "defense"
 	#set correct sprite
 	
 func _on_body_entered(ball: Ball) -> void:

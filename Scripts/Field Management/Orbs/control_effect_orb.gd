@@ -4,7 +4,7 @@ class_name ControlEffectOrb
 
 func _ready() -> void:
 	setup()
-	self.category = "Control"
+	self.category = "control"
 	#set correct sprite
 	
 func _on_body_entered(ball: Ball) -> void:
