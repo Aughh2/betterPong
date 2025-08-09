@@ -1,0 +1,12 @@
+extends EffectOrb
+class_name ControlEffectOrb
+
+
+func _ready() -> void:
+	setup()
+	self.category = "Control"
+	#set correct sprite
+	
+func _on_body_entered(ball: Ball) -> void:
+	self.effect_trigger_component.trigger_effect.emit(self.category, ball)
+	
