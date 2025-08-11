@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://c7xvur5j38so6"]
+[gd_scene load_steps=6 format=3 uid="uid://c7xvur5j38so6"]
 
 [ext_resource type="Script" uid="uid://c6u640nv1k617" path="res://Scripts/Game State Management/game_state_manager.gd" id="1_yqiuo"]
 [ext_resource type="Script" uid="uid://dhje5nqtss4x0" path="res://Scripts/menu_state.gd" id="2_ixa7f"]
 [ext_resource type="Script" uid="uid://c7kw7c0emtkk7" path="res://Scripts/Game State Management/Match State Management/match_state_manager.gd" id="3_ixa7f"]
+[ext_resource type="Script" uid="uid://c5lqkwy7kg64o" path="res://Scenes/playing_state.gd" id="3_jv3wx"]
+[ext_resource type="Script" uid="uid://b05yjcaf0gik5" path="res://Scenes/initialization.gd" id="5_ee1bb"]
 
 [node name="Game_state_manager" type="Node" node_paths=PackedStringArray("initial_state")]
 script = ExtResource("1_yqiuo")
@@ -16,11 +18,13 @@ script = ExtResource("2_ixa7f")
 [node name="Settings_state" type="Node" parent="."]
 
 [node name="Playing_state" type="Node" parent="."]
+script = ExtResource("3_jv3wx")
 
 [node name="Match_state_manager" type="Node" parent="Playing_state"]
 script = ExtResource("3_ixa7f")
 
 [node name="Initialization" type="Node" parent="Playing_state/Match_state_manager"]
+script = ExtResource("5_ee1bb")
 
 [node name="Countdown" type="Node" parent="Playing_state/Match_state_manager"]
 

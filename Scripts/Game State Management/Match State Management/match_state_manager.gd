@@ -3,8 +3,19 @@ class_name MatchStateManager
 
 # Composes a field, peddles, etc. Manages the flow of the match.
 var field: Field
-var paddles: Array[Peddle]
+var peddles: Array[Peddle]
+var balls: Array[Ball]
+var entities: Array[Node2D]
 
-func _ready() -> void:
+var peddle_factory: PeddleFactory
+var field_factory: FieldFactory
+var border_factory: BorderFactory
+var ball_factory: BallFactory
+
+func setup() -> void:
+	peddle_factory = PeddleFactory.new()
+	field_factory = FieldFactory.new()
+	border_factory = BorderFactory.new()
+	ball_factory = BallFactory.new()
 	
 	self.init(self)

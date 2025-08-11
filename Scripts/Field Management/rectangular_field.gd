@@ -8,7 +8,7 @@ var _mesh: MeshInstance2D
 func setup() -> void:
 	super.setup()
 	
-func _init(width: float, height: float, mesh: MeshInstance2D) -> void:
+func _init(width: float, height: float, mesh: MeshInstance2D) -> void: # REDO IT
 	_width = width
 	_height = height
 	_mesh = mesh
