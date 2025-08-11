@@ -18,6 +18,13 @@ func _ready() -> void:
 func _on_trigger_effect(category: String, ball: Ball) -> void:
 	# Add visual and audio response
 	
+	if category == "experience":
+		# Handle experience orb effect
+		var peddle = ball.get_last_hitting_peddle()
+		#show ui with skill buttons, whatevers clicked is added to peddles skill
+		pass
+		
 	var field = ball.get_parent()
 	if field != null and field is Field:
 		field.effect_resolver.trigger_effect.emit(category, ball)
+	

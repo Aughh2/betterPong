@@ -1,10 +1,11 @@
 extends CharacterBody2D
 class_name Ball
 
-var last_hitting_peddle: Peddle = null # A reference to a peddle that hit it last
+var _last_hitting_peddle: Peddle = null # A reference to a peddle that hit it last
 @export var speed_component: SpeedComponent
 @export var sprite_component: SpriteComponent
 @export var collision_component: CollisionShapeComponent
+@export var damage_component: DamageComponent
 
 func setup():
 	if speed_component == null:
@@ -13,9 +14,13 @@ func setup():
 		sprite_component = SpriteComponent.new(self)
 	if collision_component == null:
 		collision_component = CollisionShapeComponent.new(self)
+	if damage_component == null:
+		damage_component = DamageComponent.new(self)
+		
 	speed_component.setup()
 	sprite_component.setup()
 	collision_component.setup()
+	damage_component.setup()
 	
 	velocity = Vector2(-200, -200).normalized() * speed_component.get_speed()
 	
@@ -24,4 +29,9 @@ func _physics_process(delta: float) -> void:
 	if collision:
 		velocity = velocity.bounce(collision.get_normal())
 		if collision.get_collider() is Peddle:
-			last_hitting_peddle = collision.get_collider()
+			_last_hitting_peddle = collision.get_collider()
+			
+func get_last_hitting_peddle() -> Peddle:
+	if _last_hitting_peddle:
+		return _last_hitting_peddle
+	else: return null

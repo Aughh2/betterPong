@@ -13,7 +13,7 @@ func _on_trigger_effect(category: String, ball: Ball) -> void:
 	_resolve(category, ball)
 
 func _resolve(category: String, ball: Ball) -> void:
-	var paddle = ball.last_hitting_peddle
+	var paddle = ball.get_last_hitting_peddle()
 	var opponent_paddle
 	if parent.peddles_component:
 		opponent_paddle = parent.peddles_component.get_opponent_peddle(paddle)
@@ -34,6 +34,7 @@ func _resolve(category: String, ball: Ball) -> void:
 				"opponent_paddle": opponent_paddle,
 				"triggering_ball": ball,
 				"orb_category": category,
+				"field": parent,
 				"world": parent.get_tree().current_scene,
 				"timestamp": Time.get_ticks_msec()
 			}

@@ -23,10 +23,11 @@ func _ready() -> void:
 	# even if we already have the shape data in a component.
 	# So we ask the component to generate a CollisionShape2D node with the stored shape,
 	# and we manually add it to this Area2D node.
-	collision_component.add_collision_shape_to_owner_scene_tree()
+	collision_component.setup()
 
 	# Connect the built-in signal to handle when a body enters the Area2D
 	connect("body_entered", _on_body_entered)
+	connect("hit", _on_border_hit)
 
 func activate(peddle: Peddle) -> void:
 	# Activate this border and store the owning Peddle (used to emit context-aware signals)
@@ -43,7 +44,18 @@ func deactivate() -> void:
 	owning_peddle = null
 
 func _on_body_entered(body: Node) -> void:
-	# Only emit the signal if the border is active
+	if body is not Ball:
+		pass
+		
+	if !body.damage_component:
+		pass
+		
 	if _active:
 		# Notify listeners (e.g., game logic) that a body (likely the ball) hit this border
 		emit_signal("hit", body)
+		if !owning_peddle.health_component:
+			pass
+		owning_peddle.health_component.take_damage(body.damage_component.get_damage())
+
+func _on_border_hit(body: Node) -> void:
+	pass

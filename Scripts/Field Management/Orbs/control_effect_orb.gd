@@ -8,5 +8,6 @@ func _ready() -> void:
 	#set correct sprite
 	
 func _on_body_entered(ball: Ball) -> void:
-	self.effect_trigger_component.trigger_effect.emit(self.category, ball)
+	if self.effect_trigger_component:
+		self.effect_trigger_component.trigger_effect.emit(self.category, ball)
 	
