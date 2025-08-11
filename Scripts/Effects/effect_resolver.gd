@@ -1,4 +1,4 @@
-extends Resource
+extends Component
 class_name EffectResolver
 
 signal trigger_effect(category: String, ball: Ball)
@@ -17,8 +17,12 @@ func _resolve(category: String, ball: Ball) -> void:
 	if paddle:
 		var skill_lvl = paddle.skill_component.get_skill_by_category(category)
 		var effect_configs = get_effect_configs_by_category(category)
-		var chosen_effect = weighted_pick(effect_configs, skill_lvl)
-		if chosen_effect:
+		var chosen_effect_config = weighted_pick(effect_configs, skill_lvl)
+		if chosen_effect_config:
+			var effect_factory = parent.get("effect_factory")
+			if effect_factory:
+				var effect = effect_factory.create(chosen_effect_config)
+			
 			
 
 func get_effect_configs_by_category(category: String) -> Array:
