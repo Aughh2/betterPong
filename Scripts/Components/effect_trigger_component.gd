@@ -7,5 +7,6 @@ func setup() -> void:
 	trigger_effect.connect(_on_trigger_effect)
 	
 func _on_trigger_effect(category: String, ball: Ball) -> void:
-	pass
+	EventBus.trigger_effect.emit(category, ball)
+
 	

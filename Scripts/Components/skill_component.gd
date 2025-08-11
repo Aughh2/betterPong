@@ -21,3 +21,13 @@ func get_skills() -> Dictionary:
 			"defense": _defense,
 			"control": _control
 			}
+
+func get_skill_by_category(category: String) -> int:
+	var cat = category.to_lower()
+	var var_name = "_" + cat
+	if get(var_name):
+		return get(var_name)
+	else:
+		push_warning("Skill category '%s' does not exist." % cat)
+		return 0
+	

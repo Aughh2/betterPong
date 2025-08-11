@@ -1,0 +1,9 @@
+id = "attack_fireball"
+category = "attack"
+level = 1
+scaling = "linear"
+base_value = 5.0
+scale_per_skill = 1.5
+target_filter = ["ball"]
+visual_scene = ExtResource("res://scenes/effects/fireball.tscn")
+effect_script = ExtResource("res://scripts/effects/fireball.gd")

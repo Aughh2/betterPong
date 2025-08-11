@@ -5,6 +5,9 @@ var _width: float
 var _height: float
 var _mesh: MeshInstance2D
 
+func setup() -> void:
+	super.setup()
+	
 func _init(width: float, height: float, mesh: MeshInstance2D) -> void:
 	_width = width
 	_height = height
@@ -14,6 +17,7 @@ func _init(width: float, height: float, mesh: MeshInstance2D) -> void:
 	if borders_component == null:
 		borders_component = BordersComponent.new(self)
 	borders_component.setup()
+	setup()
 	
 func get_width() -> float:
 	return _width
