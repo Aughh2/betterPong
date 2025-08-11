@@ -20,7 +20,7 @@ script = ExtResource("2_ixa7f")
 [node name="Match_state_manager" type="Node" parent="Playing_state"]
 script = ExtResource("3_ixa7f")
 
-[node name="Waiting" type="Node" parent="Playing_state/Match_state_manager"]
+[node name="Initialization" type="Node" parent="Playing_state/Match_state_manager"]
 
 [node name="Countdown" type="Node" parent="Playing_state/Match_state_manager"]
 
