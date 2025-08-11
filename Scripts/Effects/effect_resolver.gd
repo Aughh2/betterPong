@@ -14,15 +14,30 @@ func _on_trigger_effect(category: String, ball: Ball) -> void:
 
 func _resolve(category: String, ball: Ball) -> void:
 	var paddle = ball.last_hitting_peddle
+	var opponent_paddle
+	if parent.peddles_component:
+		opponent_paddle = parent.peddles_component.get_opponent_peddle(paddle)
+	else:
+		opponent_paddle = null
 	if paddle:
 		var skill_lvl = paddle.skill_component.get_skill_by_category(category)
 		var effect_configs = get_effect_configs_by_category(category)
 		var chosen_effect_config = weighted_pick(effect_configs, skill_lvl)
 		if chosen_effect_config:
-			var effect_factory = parent.get("effect_factory")
-			if effect_factory:
-				var effect = effect_factory.create(chosen_effect_config)
-			
+			#var effect_factory = parent.get("effect_factory")
+			#if effect_factory:
+			#	var effect = effect_factory.create(chosen_effect_config)
+			var effect_instance = chosen_effect_config.effect_script.new()
+			var context := {
+				"skill_level": skill_lvl,
+				"triggering_paddle": paddle,
+				"opponent_paddle": opponent_paddle,
+				"triggering_ball": ball,
+				"orb_category": category,
+				"world": parent.get_tree().current_scene,
+				"timestamp": Time.get_ticks_msec()
+			}
+			effect_instance.apply([paddle, opponent_paddle, ball, parent], context)
 			
 
 func get_effect_configs_by_category(category: String) -> Array:
