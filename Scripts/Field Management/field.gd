@@ -3,6 +3,7 @@ class_name Field
 
 @export var peddles_component: PeddlesComponent
 @export var borders_component: BordersComponent
+@export var sprite_component: SpriteComponent
 @export var effect_resolver: EffectResolver
 @export var effect_factory: EffectFactory
 

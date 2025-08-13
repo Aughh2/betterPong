@@ -11,6 +11,6 @@ func create_ball(ball_type: String) -> Ball:
 		var ball = strategy.create_ball()
 		return ball
 	else:
-		Log.entry("No ball strategy for ball of type: %s" % ball_type)
+		Log.entry("No ball strategy for ball of type: %s" % ball_type, 1)
 		return
 		

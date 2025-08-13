@@ -34,4 +34,5 @@ func _physics_process(delta: float) -> void:
 func get_last_hitting_peddle() -> Peddle:
 	if _last_hitting_peddle:
 		return _last_hitting_peddle
-	else: return null
+	else:
+		return null
