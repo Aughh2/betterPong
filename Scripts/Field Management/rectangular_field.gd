@@ -15,6 +15,10 @@ func setup() -> void:
 	borders_component.setup()
 	sprite_component.setup()
 	
+	var left_bord_len = borders_component.get_border_by_name("Border_left").collision_component.get_shape_size().y
+	var right_bord_len = borders_component.get_border_by_name("Border_top").collision_component.get_shape_size().y
+	
+	# Spawn right peddle to leftbor/2 height x 
 	
 	
 func get_width() -> float:

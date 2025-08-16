@@ -34,3 +34,12 @@ func get_shape() -> Shape2D:
 
 func get_shape_node() -> CollisionShape2D:
 	return _shape_node
+
+func get_shape_size() -> Vector2:
+	if _shape is RectangleShape2D:
+		return _shape.size
+	elif _shape is CircleShape2D:
+		# Circle is symmetrical, so treat radius as both width/height
+		return Vector2(_shape.radius * 2.0, _shape.radius * 2.0)
+	else:
+		return Vector2.ZERO

@@ -19,5 +19,12 @@ func enter():
 	)
 	
 	parent.border_factory.create_borders(field)
+	# Hardcoding for MVP purposes
+	
+	field.peddles_component.add_peddle(peddle1)
+	field.peddles_component.add_peddle(peddle2)
 	
 	
+	field.setup()
+	peddle1.setup()
+	peddle2.setup()
