@@ -11,23 +11,28 @@ func set_rectangle_shape(size: Vector2):
 	var shape = RectangleShape2D.new()
 	shape.size = size
 	_shape = shape
+	Log.entry("[CollisionShapeComponent] of parent [%s]: set rectangular shape." % parent.name, 0)
 	_update_shape_node()
+	
 
 func set_circle_shape(radius: float):
 	var shape = CircleShape2D.new()
 	shape.radius = radius
 	_shape = shape
+	Log.entry("[CollisionShapeComponent] of parent [%s]: set circular shape." % parent.name, 0)
 	_update_shape_node()
 
 func _update_shape_node():
 	if _shape_node:
 		_shape_node.shape = _shape
+		Log.entry("[CollisionShapeComponent] of parent [%s]: shape node updated." % parent.name, 0)
 
 func add_collision_shape_to_owner_scene_tree():
 	if !_shape_node:
 		_shape_node = CollisionShape2D.new()
 		_shape_node.shape = _shape
 		parent.add_child(_shape_node)
+		Log.entry("[CollisionShapeComponent] of parent [%s]: collision shape added to a scene tree." % parent.name, 0)
 
 func get_shape() -> Shape2D:
 	return _shape

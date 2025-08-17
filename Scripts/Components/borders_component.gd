@@ -8,8 +8,10 @@ func setup() -> void:
 	
 func add_border(border: Border, add_to_scene_tree: bool = false) -> void:
 	_borders.append(border)
+	Log.entry("[BordersComponent] of parent [%s] added border." % parent.name, 0)
 	if add_to_scene_tree:
 		parent.add_child(border)
+		Log.entry("[BordersComponent] of parent [%s] added border to a scene tree." % parent.name, 0)
 	
 
 func get_borders() -> Array[Border]:

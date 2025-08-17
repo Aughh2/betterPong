@@ -8,13 +8,20 @@ var _control: int
 func setup() -> void:
 	pass
 	
-func add_points(attack: int = 0, defense: int = 0, control: int = 0) -> void:
-	if attack > 0:
-		_attack += attack
-	if defense > 0:
-		_defense += defense
-	if control > 0:
-		_control += control
+func add_attack(points: int) -> void:
+	if points > 0:
+		_attack += points
+		Log.entry("[SkillComponent] of parent [%s]: +%d attack." % [parent.name, points], 0)
+
+func add_defense(points: int) -> void:
+	if points > 0:
+		_defense += points
+		Log.entry("[SkillComponent] of parent [%s]: +%d defense." % [parent.name, points], 0)
+
+func add_control(points: int) -> void:
+	if points > 0:
+		_control += points
+		Log.entry("[SkillComponent] of parent [%s]: +%d control." % [parent.name, points], 0)
 
 func get_skills() -> Dictionary:
 	return {"attack": _attack,
@@ -28,6 +35,6 @@ func get_skill_by_category(category: String) -> int:
 	if get(var_name):
 		return get(var_name)
 	else:
-		push_warning("Skill category '%s' does not exist." % cat)
+		Log.entry("[SkillComponent] Skill category '%s' does not exist." % cat)
 		return 0
 	
