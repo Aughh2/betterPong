@@ -4,7 +4,7 @@ class_name RectangularField
 var _width: float
 var _height: float
 #var _mesh: MeshInstance2D #Unused
-
+var margin = _width / 20 #peddle to border margin
 
 func setup() -> void:
 	super.setup()
@@ -15,12 +15,12 @@ func setup() -> void:
 	borders_component.setup()
 	sprite_component.setup()
 	
-	var left_bord_len = borders_component.get_border_by_name("Border_left").collision_component.get_shape_size().y
-	var right_bord_len = borders_component.get_border_by_name("Border_top").collision_component.get_shape_size().y
+
+	var peddles = peddles_component.get_peddles_array()
+	peddles[0].position = Vector2(-_width / 2 + margin, _height / 2)
+	peddles[1].position = Vector2(_width / 2 - margin, _height / 2)
 	
-	# Spawn right peddle to leftbor/2 height x 
-	
-	
+
 func get_width() -> float:
 	return _width
 
