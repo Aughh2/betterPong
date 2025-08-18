@@ -19,7 +19,7 @@ func create_field(field_shape: String, context: Dictionary) -> Field:
 	if strategies.has(field_shape):
 		var strategy: FieldStrategy = strategies[field_shape]
 		var field = strategy.create_field(context)
-		
+		return field
 	else:
 		Log.entry("No field strategy for field of type: %s" % field_shape)
 	return null

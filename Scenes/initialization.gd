@@ -27,6 +27,7 @@ func enter():
 	field.setup()
 	peddle1.setup()
 	peddle2.setup()
+	
 	var new_state = parent.get_node("Countdown_state")
 	if new_state:
 		parent.change_state(new_state)

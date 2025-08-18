@@ -1,0 +1,28 @@
+extends Node
+class_name BallSpawner
+
+@export var parent: Field
+@export var ball_factory: BallFactory
+
+var types: Dictionary = {
+	"basicball": BasicBallStrategy
+}
+func _ready() -> void:
+	setup()
+	
+func setup():
+	if !ball_factory:
+		ball_factory = BallFactory.new()
+	if !parent:
+		parent = get_parent()
+		
+func spawn_ball(type: String) -> void:
+	if types.has(type):
+		var ball = ball_factory.create_ball(type)
+		if !ball:
+			Log.entry("[BallSpawner] of parent [%s]: ball factory failed to create ball." % parent.name, 1)
+		if !parent.balls_component:
+			Log.entry("[BallSpawner] of parent [%s]: parent does not have [BallsComponent]. Failure to spawn ball." % parent.name, 1)
+		parent.balls_component.add_ball(ball)
+	else:
+		Log.entry("[BallSpawner] of parent [%s]: spawn_ball(type): incorrect type given." % parent.name, 1)

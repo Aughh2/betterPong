@@ -2,7 +2,7 @@ extends Factory
 class_name BallFactory
 
 var strategies := {
-	"BasicBall": BasicBallStrategy.new()
+	"basicball": BasicBallStrategy.new()
 }
 
 func create_ball(ball_type: String) -> Ball:
