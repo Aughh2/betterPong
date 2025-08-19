@@ -18,6 +18,11 @@ func setup() -> void:
 	if not effect_trigger_component:
 		effect_trigger_component = EffectTriggerComponent.new(self)
 	
+	sprite_component.setup()
+	speed_component.setup()
+	collision_component.setup()
+	effect_trigger_component.setup()
+	
 	body_entered.connect(_on_body_entered)
 	
 func _on_body_entered(ball: Ball):

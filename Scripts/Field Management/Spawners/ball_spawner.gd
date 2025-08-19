@@ -15,6 +15,8 @@ func setup():
 		ball_factory = BallFactory.new()
 	if !parent:
 		parent = get_parent()
+		if !(parent is Field):
+			Log.entry("[BallSpawner]: setup() failed to cast parent as field. Make sure [BallSpawner] is the scene child of Field.", 1)
 		
 func spawn_ball(type: String) -> void:
 	if types.has(type):
