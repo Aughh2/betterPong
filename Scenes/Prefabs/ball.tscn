@@ -1,13 +1,13 @@
 [gd_scene load_steps=4 format=3 uid="uid://desqw6uri1nvl"]
 
 [ext_resource type="Texture2D" uid="uid://cct025e75r1vw" path="res://Sprites/ball.png" id="1_d60mj"]
-[ext_resource type="Script" uid="uid://cd1b5lhbyp27v" path="res://Scripts/ball.gd" id="1_ij5cq"]
+[ext_resource type="Script" uid="uid://dm13ruidi5ke0" path="res://Scripts/Ball Management/ball.gd" id="1_s0g25"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_376qj"]
 size = Vector2(11, 11)
 
 [node name="Ball" type="CharacterBody2D"]
-script = ExtResource("1_ij5cq")
+script = ExtResource("1_s0g25")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_d60mj")

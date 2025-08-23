@@ -18,5 +18,6 @@ func create_ball() -> Ball:
 	ball.sprite_component = sprite_component
 	ball.speed_component = speed_component
 	ball.collision_component = collision_component
+	ball.damage_component = damage_component
 	
 	return ball

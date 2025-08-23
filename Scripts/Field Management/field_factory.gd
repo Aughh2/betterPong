@@ -21,5 +21,5 @@ func create_field(field_shape: String, context: Dictionary) -> Field:
 		var field = strategy.create_field(context)
 		return field
 	else:
-		Log.entry("No field strategy for field of type: %s" % field_shape)
+		Log.entry("[FieldFactory]: No field strategy for field of type: %s" % field_shape)
 	return null

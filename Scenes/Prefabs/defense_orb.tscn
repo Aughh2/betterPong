@@ -1,10 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dedsjafdmt6bc"]
+[gd_scene load_steps=5 format=3 uid="uid://cp5hswvxjhlcx"]
 
-[ext_resource type="Script" uid="uid://ju51cukqinxt" path="res://Scripts/Field Management/Orbs/attack_effect_orb.gd" id="1_8pije"]
+[ext_resource type="Script" uid="uid://befuqrvd04t5w" path="res://Scripts/Field Management/Orbs/defense_effect_orb.gd" id="1_kps8f"]
 
 [sub_resource type="Gradient" id="Gradient_8pije"]
-offsets = PackedFloat32Array(0, 0.714286, 0.954545, 1)
-colors = PackedColorArray(0, 0, 0, 1, 0.746955, 0.126975, 0.20527, 1, 0.954545, 0.954545, 0.954545, 1, 1, 1, 1, 1)
+offsets = PackedFloat32Array(0, 0.662338, 0.954545, 1)
+colors = PackedColorArray(0, 0, 0, 1, 6.61798e-06, 0.684377, 0.16202, 1, 0.954545, 0.954545, 0.954545, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_w10qw"]
 gradient = SubResource("Gradient_8pije")
@@ -12,8 +12,8 @@ gradient = SubResource("Gradient_8pije")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bi8uc"]
 size = Vector2(64, 64)
 
-[node name="AttackEffectOrb" type="Area2D"]
-script = ExtResource("1_8pije")
+[node name="DefenseEffectOrb" type="Area2D"]
+script = ExtResource("1_kps8f")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("GradientTexture2D_w10qw")

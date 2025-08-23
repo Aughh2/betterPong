@@ -9,7 +9,13 @@ var types: Dictionary = {
 }
 func _ready() -> void:
 	setup()
-	
+
+func _init(owner: Node2D) -> void:
+	parent = owner
+	if !parent:
+		Log.entry(str("[BallSpawner] failed to cast parent to an entity."), 1)
+	parent.add_child(self)
+
 func setup():
 	if !ball_factory:
 		ball_factory = BallFactory.new()
@@ -17,7 +23,7 @@ func setup():
 		parent = get_parent()
 		if !(parent is Field):
 			Log.entry("[BallSpawner]: setup() failed to cast parent as field. Make sure [BallSpawner] is the scene child of Field.", 1)
-		
+
 func spawn_ball(type: String) -> void:
 	if types.has(type):
 		var ball = ball_factory.create_ball(type)

@@ -19,7 +19,10 @@ func enter():
 	)
 	
 	parent.border_factory.create_borders(field)
-
+	
+	field.peddles_component = PeddlesComponent.new(field)
+	if !field.peddles_component:
+		Log.entry("[Initialization_state] Failed to set [PeddleComponent] to a [Field].", 1)
 	field.peddles_component.add_peddle(peddle1)
 	field.peddles_component.add_peddle(peddle2)
 	

@@ -5,8 +5,13 @@ class_name Field
 @export var balls_component: BallsComponent
 @export var borders_component: BordersComponent
 @export var sprite_component: SpriteComponent
+@export var collision_component: CollisionShapeComponent
 @export var effect_resolver: EffectResolver
 @export var effect_factory: EffectFactory
+
+# TO BE SET UP IN CHILD CLASSES
+@export var ball_spawner: BallSpawner
+@export var orb_spawner: OrbSpawner
 
 func setup() -> void:
 	if !effect_resolver:

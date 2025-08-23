@@ -7,7 +7,7 @@ func create_field(context: Dictionary) -> Field:
 	field.set_width(context["width"])
 	
 	# Create the sprite component
-	var sprite_component = SpriteComponent.new(field)
+	field.sprite_component = SpriteComponent.new(field)
 	
 	# Create a basic white texture
 	var img = Image.new()
@@ -17,12 +17,16 @@ func create_field(context: Dictionary) -> Field:
 	tex.create_from_image(img)
 	
 	# Assign the texture to the sprite
-	sprite_component.set_sprite_from_texture(tex)
+	field.sprite_component.set_sprite_from_texture(tex)
 	
 	# Scale the sprite to match field size
-	sprite_component.scale = Vector2(
+	field.sprite_component.scale = Vector2(
 		context["width"],
 		context["height"]
 	)
-	
+	field.collision_component = CollisionShapeComponent.new(field)
+	field.collision_component.set_rectangle_shape(Vector2(
+		context["width"],
+		context["height"]
+	))
 	return field
