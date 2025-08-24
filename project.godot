@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="betterPong"
-run/main_scene="uid://bd6p4jevkhwhy"
+run/main_scene="uid://b1rhqaigcuuf0"
 config/features=PackedStringArray("4.4", "Mobile")
 config/icon="res://icon.svg"
 
@@ -20,7 +20,7 @@ config/icon="res://icon.svg"
 Log="*res://addons/GoLogger/Log.tscn"
 GameManager="*res://Scenes/game_manager.tscn"
 EventBus="*res://Scripts/Event Bus/event_bus.gd"
-UiController="*res://Scripts/UI Management/ui_controller.gd"
+UiController="*res://Scenes/UiController.tscn"
 GameDataManager="*res://Scripts/Data Containers/game_data.gd"
 
 [display]

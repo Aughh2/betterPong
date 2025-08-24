@@ -375,6 +375,7 @@ func entry(log_entry : String, category_index : int = 0) -> void:
 	var _entry : String = str("\t", _timestamp, log_entry) if get_value("timestamp_entries") else str("\t", log_entry)
 	_fw.store_line(_entry)
 	_fw.close() 
+	print(_entry)
 
 ## Creates a copied log file of the current session in it's current state at the time it's called.
 ## You can either call this method programmatically by calling this method and passing in a predetermined name or call it without and use the prompt to enter a name.

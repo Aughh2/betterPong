@@ -10,11 +10,10 @@ var state_machine: StateMachine
 func _ready() -> void:
 	Log.start_session()
 	Log.entry("[GameManager] _ready() called.", 0)
-	print("[DEBUG] GameManager ready, children: ", get_children())
 	setup()
 
 func _enter_tree() -> void:
-	print("[DEBUG] GameManager entered tree")
+	Log.entry("[GameManager] _ready() called.", 0)
 	
 func setup() -> void:
 	state_machine = get_node("Game_state_manager")

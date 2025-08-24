@@ -8,7 +8,7 @@ func init(parent: Node) -> void:
 	for child in get_children():
 		if child is State:
 			child.parent = parent
-			print(child.name, " parent set to: ", parent.name)
+			Log.entry("%s parent set to: %s" % [child.name, parent.name], 0)
 	change_state(initial_state)
 
 func change_state(new_state: State) -> void:

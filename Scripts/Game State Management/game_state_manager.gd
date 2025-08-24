@@ -8,5 +8,5 @@ class_name GameStateManager
 
 
 func _ready() -> void:
-	self.init(get_parent())
+	#self.init(get_parent())
 	pass
