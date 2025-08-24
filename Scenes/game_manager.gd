@@ -8,6 +8,7 @@ extends Node
 var state_machine: StateMachine
 
 func _ready() -> void:
+	Log.start_session()
 	Log.entry("[GameManager] _ready() called.", 0)
 	print("[DEBUG] GameManager ready, children: ", get_children())
 	setup()
