@@ -3,6 +3,7 @@ class_name RectangularFieldStrategy
 
 func create_field(context: Dictionary) -> Field:
 	var field = RectangularField.new()
+	Log.entry("[RectangularFieldStrategy]: context[height] = %f, context[width] = %f" % [context["height"], context["width"]], 0)
 	field.set_height(context["height"])
 	field.set_width(context["width"])
 	

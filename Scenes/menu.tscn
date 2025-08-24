@@ -9,35 +9,40 @@ script = ExtResource("1_1rerr")
 
 [node name="NewGameButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 163.0
-offset_top = 89.0
-offset_right = 240.0
-offset_bottom = 132.0
+offset_left = 36.0
+offset_top = 10.0
+offset_right = 129.0
+offset_bottom = 53.0
 toggle_mode = true
 button_pressed = true
-text = "Start"
+text = "New Game"
 
 [node name="LoadGameButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 163.0
-offset_top = 89.0
-offset_right = 240.0
-offset_bottom = 132.0
+offset_left = 31.0
+offset_top = 61.0
+offset_right = 127.0
+offset_bottom = 104.0
 toggle_mode = true
 button_pressed = true
-text = "Start"
+text = "Load Game"
 
 [node name="SettingsButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 163.0
-offset_top = 89.0
-offset_right = 240.0
-offset_bottom = 132.0
+offset_left = 43.0
+offset_top = 110.0
+offset_right = 120.0
+offset_bottom = 153.0
 toggle_mode = true
 button_pressed = true
-text = "Start"
+text = "Settings"
 
 [node name="QuitButton" type="Button" parent="."]
 layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = 42.0
+offset_top = 166.0
+offset_right = 119.0
+offset_bottom = 209.0
+toggle_mode = true
+button_pressed = true
+text = "Quit"

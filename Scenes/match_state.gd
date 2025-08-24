@@ -24,7 +24,10 @@ func setup() -> void:
 var match_state_machine: StateMachine
 
 func enter():
+	Log.entry("[MatchState]: enter")
+	setup()
 	match_state_machine = StateMachine.new()
 	match_state_machine.initial_state = get_node("Initialization_state")
 	match_state_machine.init(self)
+	
 	

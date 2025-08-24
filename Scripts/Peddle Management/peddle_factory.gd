@@ -5,10 +5,12 @@ var strategies := {
 	#"RectangularField": RectangularBorderStrategy.new()
 }
 
+var basic_peddle:= preload("res://Sprites/Sprite-0002.png")
+
 func create_peddle(controller: String) -> Peddle:
 	var peddle = Peddle.new()
 	peddle.sprite_component = SpriteComponent.new(peddle)
-	peddle.sprite_component.set_sprite("res://Sprites/Sprite-0002.png")
+	peddle.sprite_component.set_sprite_from_texture(basic_peddle)
 	peddle.speed_component = SpeedComponent.new(peddle)
 	peddle.speed_component.set_speed(200)
 	var control: PeddleController

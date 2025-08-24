@@ -7,19 +7,22 @@ func enter():
 	var screen_width = ProjectSettings.get_setting("display/window/size/width")
 	var screen_height = ProjectSettings.get_setting("display/window/size/height")
 	
-	var peddle1 = parent.peddle_factory.create_peddle("player1")
-	var peddle2 = parent.peddle_factory.create_peddle("player2")
-	
-	var field = parent.field_factory.create_field(
-		"RectangularField",
-		{
+	if get_parent().peddle_factory == null:
+		Log.entry("[InitializationState]: [MatchState]'s peddle factory is null.", 1)
+		
+	var peddle1 = get_parent().peddle_factory.create_peddle("player1")
+	var peddle2 = get_parent().peddle_factory.create_peddle("player2")
+	var context: Dictionary =  {
 			"height": screen_height,
 			"width": screen_width
 		}
+		
+	var field = get_parent().field_factory.create_field(
+		"RectangularField", context
 	)
-	parent.field = field
+	get_parent().field = field
 	
-	parent.border_factory.create_borders(field)
+	get_parent().border_factory.create_borders(field)
 	
 	field.peddles_component = PeddlesComponent.new(field)
 	if !field.peddles_component:
@@ -29,7 +32,7 @@ func enter():
 	
 	
 	field.setup()
-	parent.field = field
+	get_parent().field = field
 	parent.add_child(field)
 	
 	peddle1.setup()

@@ -13,14 +13,18 @@ func _ready() -> void:
 	$QuitButton.connect("pressed", _on_quit_button_pressed)
 	
 func _on_new_game_button_pressed() -> void:
+	Log.entry("[MainMenu]: new game button pressed.", 0)
 	emit_signal("new_game_pressed")
 	
 func _on_load_game_button_pressed() -> void:
+	Log.entry("[MainMenu]: load game button pressed.", 0)
 	pass
 	
 func _on_settings_button_pressed() -> void:
+	Log.entry("[MainMenu]: settings button pressed.", 0)
 	pass
 	
 func _on_quit_button_pressed() -> void:
+	Log.entry("[MainMenu]: quit button pressed.", 0)
 	pass
 	

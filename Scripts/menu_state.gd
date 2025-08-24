@@ -8,8 +8,10 @@ class_name MainMenuState
 func enter():
 	UiController.show_ui_scene("MainMenu")
 	var menu = UiController.current_ui_scene
-	if menu:
-		menu.new_game_pressed.connect(_on_new_game_pressed)
+	if !menu:
+		Log.entry("[MainMenuState]: UiController.current_ui_scene is null.", 0)
+	Log.entry("[MainMenuState]: UiController.current_ui_scene is NOT null.", 0)
+	menu.new_game_pressed.connect(_on_new_game_pressed)
 		
 
 func exit():
@@ -19,7 +21,9 @@ func _on_new_game_pressed() -> void:
 	#var new_state = "Peddle_creation_state"
 	#if GameManager.get_node(new_state):
 	#	GameManager.change_state(new_state)
-	var new_state = "Playing_state" # For testing
-	if GameManager.get_node(new_state):
-		GameManager.change_state(new_state)
-	
+	Log.entry("[MainMenuState]: _on_new_game_pressed() called.", 0)
+
+	var new_state = parent.state_machine.get_node("Match_state")
+	if new_state:
+		Log.entry("[MainMenuState]: parent.get_node(match state) is %s" % new_state, 0)
+		parent.state_machine.change_state(new_state)

@@ -5,18 +5,18 @@ class_name UIController
 @export var peddle_creation_scene: PackedScene
 @export var level_up_scene: PackedScene
 
-var ui_scenes: Dictionary = {
-	"MainMenu": main_menu_scene,
-	"PeddleCreationMenu": peddle_creation_scene,
-	"LevelUp": level_up_scene
-}
+var ui_scenes: Dictionary
 
 func _ready() -> void:
 	setup()
 	Log.entry("[UiController] is _ready.", 0)
 	
 func setup() -> void:
-	pass
+	ui_scenes = {
+		"MainMenu": main_menu_scene,
+		"PeddleCreationMenu": peddle_creation_scene,
+		"LevelUp": level_up_scene
+	}
 	
 var current_ui_scene: Node = null
 
