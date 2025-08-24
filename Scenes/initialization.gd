@@ -17,6 +17,7 @@ func enter():
 			"width": screen_width
 		}
 	)
+	parent.field = field
 	
 	parent.border_factory.create_borders(field)
 	
@@ -28,6 +29,8 @@ func enter():
 	
 	
 	field.setup()
+	parent.field = field
+	
 	peddle1.setup()
 	peddle2.setup()
 	

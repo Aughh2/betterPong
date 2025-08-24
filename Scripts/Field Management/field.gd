@@ -1,6 +1,9 @@
 extends StaticBody2D
 class_name Field
 
+
+@export var parent: Node
+
 @export var peddles_component: PeddlesComponent
 @export var balls_component: BallsComponent
 @export var borders_component: BordersComponent
@@ -27,3 +30,4 @@ func setup() -> void:
 	effect_resolver.setup()
 	peddles_component.setup()
 	balls_component.setup()
+	

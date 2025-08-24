@@ -1,11 +1,25 @@
 extends State
+class_name MatchState
 
-var match_state_manager: StateMachine
+
+# Composes a field, peddles, etc. Manages the flow of the match.
+var field: Field
+
+var peddle_factory: PeddleFactory
+var field_factory: FieldFactory
+var border_factory: BorderFactory
+var ball_factory: BallFactory
+
+func setup() -> void:
+	peddle_factory = PeddleFactory.new()
+	field_factory = FieldFactory.new()
+	border_factory = BorderFactory.new()
+	ball_factory = BallFactory.new()
+	
+var match_state_machine: StateMachine
 
 func enter():
-	match_state_manager = get_node("Match_state_manager")
-	if !match_state_manager:
-		Log.entry("[PlayingState]: enter(): [MatchStateManager] is null.")
-		
-	match_state_manager.setup()
+	match_state_machine = StateMachine.new()
+	match_state_machine.initial_state = get_node("Initialization_state")
+	match_state_machine.init(self)
 	

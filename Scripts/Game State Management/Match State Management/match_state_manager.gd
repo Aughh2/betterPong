@@ -1,11 +1,8 @@
 extends StateMachine
-class_name MatchStateManager
+class_name MatchStateManagerer
 
 # Composes a field, peddles, etc. Manages the flow of the match.
 var field: Field
-var peddles: Array[Peddle]
-var balls: Array[Ball]
-var entities: Array[Node2D]
 
 var peddle_factory: PeddleFactory
 var field_factory: FieldFactory
