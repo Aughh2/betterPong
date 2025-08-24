@@ -3,10 +3,12 @@ class_name UIController
 
 @export var main_menu_scene: PackedScene
 @export var peddle_creation_scene: PackedScene
+@export var level_up_scene: PackedScene
 
 var ui_scenes: Dictionary = {
 	"MainMenu": main_menu_scene,
-	"PeddleCreationMenu": peddle_creation_scene
+	"PeddleCreationMenu": peddle_creation_scene,
+	"LevelUp": level_up_scene
 }
 
 func _ready() -> void:

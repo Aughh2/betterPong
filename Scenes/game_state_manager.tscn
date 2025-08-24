@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://c7xvur5j38so6"]
+[gd_scene load_steps=7 format=3 uid="uid://c7xvur5j38so6"]
 
 [ext_resource type="Script" uid="uid://c6u640nv1k617" path="res://Scripts/Game State Management/game_state_manager.gd" id="1_yqiuo"]
 [ext_resource type="Script" uid="uid://dhje5nqtss4x0" path="res://Scripts/menu_state.gd" id="2_ixa7f"]
-[ext_resource type="Script" uid="uid://c5lqkwy7kg64o" path="res://Scenes/playing_state.gd" id="3_jv3wx"]
+[ext_resource type="Script" uid="uid://c5lqkwy7kg64o" path="res://Scenes/match_state.gd" id="3_jv3wx"]
 [ext_resource type="Script" uid="uid://b05yjcaf0gik5" path="res://Scenes/initialization.gd" id="5_ee1bb"]
 [ext_resource type="Script" uid="uid://c2ym1507nwtag" path="res://Scenes/countdown_state.gd" id="6_au3dj"]
+[ext_resource type="Script" uid="uid://c4m16mdkm0xjd" path="res://Scenes/playing_state.gd" id="6_l4yiy"]
 
 [node name="Game_state_manager" type="Node" node_paths=PackedStringArray("initial_state")]
 script = ExtResource("1_yqiuo")
@@ -27,6 +28,7 @@ script = ExtResource("5_ee1bb")
 script = ExtResource("6_au3dj")
 
 [node name="Playing_state" type="Node" parent="Match_state"]
+script = ExtResource("6_l4yiy")
 
 [node name="Paused_state" type="Node" parent="Match_state"]
 

@@ -30,10 +30,11 @@ func enter():
 	
 	field.setup()
 	parent.field = field
+	parent.add_child(field)
 	
 	peddle1.setup()
 	peddle2.setup()
 	
 	var new_state = parent.get_node("Countdown_state")
 	if new_state:
-		parent.change_state(new_state)
+		parent.match_state_machine.change_state(new_state)

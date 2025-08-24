@@ -1,25 +1,39 @@
 extends State
-class_name MatchState
+class_name PlayingState
 
-
-# Composes a field, peddles, etc. Manages the flow of the match.
 var field: Field
 
-var peddle_factory: PeddleFactory
-var field_factory: FieldFactory
-var border_factory: BorderFactory
-var ball_factory: BallFactory
+func enter() -> void:
+	setup()
+	field = parent.field
+	
+	if !field:
+		Log.entry("[PlayingState]: field is null.", 1)
+		pass
+	field.ball_spawner.spawn_ball("basicball")
 
 func setup() -> void:
-	peddle_factory = PeddleFactory.new()
-	field_factory = FieldFactory.new()
-	border_factory = BorderFactory.new()
-	ball_factory = BallFactory.new()
-	
-var match_state_machine: StateMachine
+	EventBus.peddle_died.connect(_on_peddle_died)
 
-func enter():
-	match_state_machine = StateMachine.new()
-	match_state_machine.initial_state = get_node("Initialization_state")
-	match_state_machine.init(self)
+func _on_peddle_died(peddle: Peddle) -> void:
+	# Get the remaining peddle
+	var winner_arr = field.peddles_component.get_peddles_array()
+	parent.results["winner"] = winner_arr[0]
+	
+	var next_state = parent.get_node("Ended_state")
+	if !next_state:
+		Log.entry("[PlayingState]: _on_peddle_died(): next state is null.", 1)
+		pass
+	parent.match_state_machine.change_state(next_state)
+
+
+func _process(delta: float) -> void:
+
+	if Input.is_action_pressed("pause"):
+		var next_state = parent.get_node("Paused_state")
+		if !next_state:
+			Log.entry("[PlayingState]: _process(): next state is null.", 1)
+			
+		parent.match_state_machine.change_state(next_state)
+		
 	

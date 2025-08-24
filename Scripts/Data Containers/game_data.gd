@@ -19,7 +19,7 @@ func save():
 		"settings": settings,
 	}
 	var file = FileAccess.open("user://save.json", FileAccess.WRITE)
-	file.store_string(to_json(save_data))
+	#file.store_string(to_json(save_data))
 
 func load():
 	if not FileAccess.file_exists("user://save.json"):

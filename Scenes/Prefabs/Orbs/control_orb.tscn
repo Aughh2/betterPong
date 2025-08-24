@@ -1,13 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://b81pjfsdb8scy"]
+[gd_scene load_steps=4 format=3 uid="uid://b81pjfsdb8scy"]
 
 [ext_resource type="Script" uid="uid://dgadtvnomt7m6" path="res://Scripts/Field Management/Orbs/control_effect_orb.gd" id="1_jr6m4"]
-
-[sub_resource type="Gradient" id="Gradient_8pije"]
-offsets = PackedFloat32Array(0, 0.662338, 0.954545, 1)
-colors = PackedColorArray(0, 0, 0, 1, 0, 0.32036, 0.740573, 1, 0.954545, 0.954545, 0.954545, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_w10qw"]
-gradient = SubResource("Gradient_8pije")
+[ext_resource type="Texture2D" uid="uid://b13imnnf546sp" path="res://Scenes/Prefabs/Orbs/control_orb_texture.tres" id="2_ow5cn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bi8uc"]
 size = Vector2(64, 64)
@@ -16,7 +10,7 @@ size = Vector2(64, 64)
 script = ExtResource("1_jr6m4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("GradientTexture2D_w10qw")
+texture = ExtResource("2_ow5cn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_bi8uc")

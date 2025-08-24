@@ -62,6 +62,8 @@ func _on_peddle_damaged(amount: float) -> void:
 	
 func _on_peddle_died() -> void:
 	EventBus.peddle_died.emit(self)
+	queue_free()
+	Log.entry("[Peddle]: _on_peddle_died(): emited self to event bus.peddle_died and freed.", 0)
 
 func _on_peddle_level_upped(new_level: int) -> void:
 	EventBus.level_up.emit(new_level)

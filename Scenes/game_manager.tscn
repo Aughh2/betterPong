@@ -1,11 +1,43 @@
-[gd_scene load_steps=3 format=3 uid="uid://bd6p4jevkhwhy"]
+[gd_scene load_steps=10 format=3 uid="uid://bd6p4jevkhwhy"]
 
 [ext_resource type="Script" uid="uid://b8vjngkd5aec8" path="res://Scenes/game_manager.gd" id="1_e5fcp"]
-[ext_resource type="PackedScene" uid="uid://c7xvur5j38so6" path="res://Scenes/game_state_manager.tscn" id="1_oj352"]
+[ext_resource type="Script" uid="uid://c6u640nv1k617" path="res://Scripts/Game State Management/game_state_manager.gd" id="2_71d4j"]
+[ext_resource type="Script" uid="uid://dhje5nqtss4x0" path="res://Scripts/menu_state.gd" id="3_efn8y"]
+[ext_resource type="Script" uid="uid://c5lqkwy7kg64o" path="res://Scenes/match_state.gd" id="4_i4mau"]
+[ext_resource type="Script" uid="uid://b05yjcaf0gik5" path="res://Scenes/initialization.gd" id="5_b5cn8"]
+[ext_resource type="Script" uid="uid://c2ym1507nwtag" path="res://Scenes/countdown_state.gd" id="6_jencv"]
+[ext_resource type="Script" uid="uid://c4m16mdkm0xjd" path="res://Scenes/playing_state.gd" id="7_kmrvs"]
+[ext_resource type="Script" uid="uid://dvgpmt6j2li1o" path="res://Scenes/paused_state.gd" id="8_efn8y"]
+[ext_resource type="Script" uid="uid://bky6p6njn1phd" path="res://Scenes/ended_state.gd" id="9_i4mau"]
 
 [node name="GameManager" type="Node"]
 script = ExtResource("1_e5fcp")
 
-[node name="Game_state_manager" parent="." instance=ExtResource("1_oj352")]
+[node name="Game_state_manager" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("2_71d4j")
+initial_state = NodePath("Main_menu_state")
 
-[editable path="Game_state_manager"]
+[node name="Main_menu_state" type="Node" parent="Game_state_manager"]
+script = ExtResource("3_efn8y")
+
+[node name="Peddle_creation_state" type="Node" parent="Game_state_manager"]
+
+[node name="Settings_state" type="Node" parent="Game_state_manager"]
+
+[node name="Match_state" type="Node" parent="Game_state_manager"]
+script = ExtResource("4_i4mau")
+
+[node name="Initialization_state" type="Node" parent="Game_state_manager/Match_state"]
+script = ExtResource("5_b5cn8")
+
+[node name="Countdown_state" type="Node" parent="Game_state_manager/Match_state"]
+script = ExtResource("6_jencv")
+
+[node name="Playing_state" type="Node" parent="Game_state_manager/Match_state"]
+script = ExtResource("7_kmrvs")
+
+[node name="Paused_state" type="Node" parent="Game_state_manager/Match_state"]
+script = ExtResource("8_efn8y")
+
+[node name="Ended_state" type="Node" parent="Game_state_manager/Match_state"]
+script = ExtResource("9_i4mau")

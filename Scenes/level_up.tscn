@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://cla5s0e2nc53u"]
+
+[ext_resource type="Script" uid="uid://bqqhn2rndrj78" path="res://Scenes/level_up.gd" id="1_cv3ws"]
+[ext_resource type="Texture2D" uid="uid://bjdn6n6m1pamu" path="res://Scenes/Prefabs/Orbs/attack_orb_texture.tres" id="2_vle0q"]
+[ext_resource type="Texture2D" uid="uid://ci5jy3japxrhk" path="res://Scenes/Prefabs/Orbs/defense_orb_texture.tres" id="3_e48ox"]
+[ext_resource type="Texture2D" uid="uid://b13imnnf546sp" path="res://Scenes/Prefabs/Orbs/control_orb_texture.tres" id="4_hjw4d"]
+
+[node name="LevelUp" type="Control"]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+grow_horizontal = 2
+script = ExtResource("1_cv3ws")
+
+[node name="Attack" type="Button" parent="."]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+icon = ExtResource("2_vle0q")
+
+[node name="Defense" type="Button" parent="."]
+layout_mode = 0
+offset_left = 72.0
+offset_right = 144.0
+offset_bottom = 72.0
+icon = ExtResource("3_e48ox")
+
+[node name="Control" type="Button" parent="."]
+layout_mode = 0
+offset_left = 144.0
+offset_right = 216.0
+offset_bottom = 72.0
+icon = ExtResource("4_hjw4d")
