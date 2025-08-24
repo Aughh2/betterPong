@@ -1,7 +1,7 @@
 extends Component
 class_name CollisionShapeComponent
 
-var _shape_node: CollisionShape2D
+var _shape_node: CollisionShape2D # In the scene tree
 var _shape: Shape2D
 
 func setup() -> void:

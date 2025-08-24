@@ -1,4 +1,4 @@
-extends Node
+extends CanvasLayer
 class_name UIController
 
 @export var main_menu_scene: PackedScene

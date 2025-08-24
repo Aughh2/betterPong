@@ -32,6 +32,6 @@ script = ExtResource("6_au3dj")
 
 [node name="Playing_state" type="Node" parent="Playing_state/Match_state_manager"]
 
-[node name="Ended_state" type="Node" parent="Playing_state/Match_state_manager"]
+[node name="Paused_state" type="Node" parent="Playing_state/Match_state_manager"]
 
-[node name="Paused_state" type="Node" parent="."]
+[node name="Ended_state" type="Node" parent="Playing_state/Match_state_manager"]

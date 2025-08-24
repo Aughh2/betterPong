@@ -1,12 +1,36 @@
 extends Node
 class_name OrbSpawner
 
+#####################
+# A node based component for a field. Spawns orbs on the field.
+#####################
+
 @export var parent: Field
 
-var orbs: Array[EffectOrb] = []
+@export var attack_orb: PackedScene
+@export var defense_orb: PackedScene
+@export var control_orb: PackedScene
+@export var experience_orb: PackedScene
+
+var orbs: Array[PackedScene] = []
+
+var _working: bool = false
+
+@export var min_spawn_interval := 5
+@export var max_spawn_interval := 10
+var spawn_timer: Timer
 
 func _ready() -> void:
 	setup()
+	spawn_timer = Timer.new()
+	add_child(spawn_timer)
+	spawn_timer.one_shot = true
+	spawn_timer.connect("timeout", Callable(self, "_on_spawn_timeout"))
+	orbs.append(attack_orb)
+	orbs.append(defense_orb)
+	orbs.append(control_orb)
+	orbs.append(experience_orb)
+
 
 func _init(owner: Node2D) -> void:
 	parent = owner
@@ -20,3 +44,46 @@ func setup():
 		if !(parent is Field):
 			Log.entry("[OrbSpawner]: setup() failed to cast parent as field. Make sure [OrbSpawner] is the scene child of Field.", 1)
 		
+func start() -> void:
+	if _working == true:
+		Log.entry("[OrbSpawner]: start() called on already active.", 1)
+		pass
+	_working = true
+	_start_next_spawn()
+
+func _start_next_spawn():
+	spawn_timer.wait_time = randf_range(min_spawn_interval, max_spawn_interval)
+	spawn_timer.start()
+	
+func _on_spawn_timeout():
+	spawn_orb()
+	if _working:
+		_start_next_spawn()
+	
+func stop() -> void:
+	if _working == false:
+		Log.entry("[OrbSpawner]: stop() called on inactive spawner.", 1)
+	_working = false
+
+func spawn_orb() -> void:
+	if !parent:
+		Log.entry("[OrbSpawner]: in spawn_orb(): parent: Field is null.", 1)
+		pass
+		
+	var shape = parent.collision_component.get_shape()
+	if !shape:
+		Log.entry("[OrbSpawner]: Failed to access parent: Field collision shape.", 1)
+	
+	var spawn_point = Vector2(0, 0)
+	if shape is RectangleShape2D:
+		spawn_point = random_point_in_rect_shape(shape)
+	
+	var random_orb_scene = orbs[int(randi_range(0, orbs.size()))]
+	var random_orb = random_orb_scene.instantiate()
+	parent.orbs_component.add_orb(random_orb)
+
+func random_point_in_rect_shape(collision_shape: RectangleShape2D) -> Vector2:
+	var extents = collision_shape.extents  # half-width, half-height
+	var x = randf_range(-extents.x, extents.x)
+	var y = randf_range(-extents.y, extents.y)
+	return Vector2(x, y) + $CollisionShape2D.position  # offset by shape position
