@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Log="*res://addons/GoLogger/Log.tscn"
-GameManager="*res://Scenes/game_state_manager.tscn"
+GameManager="*res://Scenes/game_manager.tscn"
 EventBus="*res://Scripts/Event Bus/event_bus.gd"
 UiController="*res://Scripts/UI Management/ui_controller.gd"
 GameDataManager="*res://Scripts/Data Containers/game_data.gd"

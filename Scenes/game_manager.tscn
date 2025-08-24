@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bd6p4jevkhwhy"]
+
+[ext_resource type="Script" uid="uid://b8vjngkd5aec8" path="res://Scenes/game_manager.gd" id="1_e5fcp"]
+[ext_resource type="PackedScene" uid="uid://c7xvur5j38so6" path="res://Scenes/game_state_manager.tscn" id="1_oj352"]
+
+[node name="GameManager" type="Node"]
+script = ExtResource("1_e5fcp")
+
+[node name="Game_state_manager" parent="." instance=ExtResource("1_oj352")]
+
+[editable path="Game_state_manager"]
