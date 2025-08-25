@@ -18,6 +18,8 @@ func setup() -> void:
 	sprite_component.setup()
 	collision_component.setup()
 	
+	# A rectangular field, setting rectangle shape manually.
+	collision_component.set_rectangle_shape(sprite_component.get_sprite_size())
 
 	var peddles = peddles_component.get_peddles_array()
 	peddles[0].position = Vector2(-_width / 2 + margin, _height / 2)
@@ -42,14 +44,18 @@ func get_size() -> Vector2:
 	return Vector2(_width, _height)
 
 func set_width(value: float) -> void:
-	if !value > 0:
+	if value > 0 == false:
+		Log.entry("[RectangularField]: set_width(value): value %f < 0" % value, 1)
 		pass
 	_width = value
+	Log.entry("[RectangularField]: set_width(value): _width set to %f" % _width, 0)
 
 func set_height(value: float) -> void:
 	if !value > 0:
+		Log.entry("[RectangularField]: set_height(value): value %f < 0" % value, 1)
 		pass
 	_height = value
+	Log.entry("[RectangularField]: set_height(value): _height set to %f" % _height, 0)
 	
 func get_bounds() -> Rect2:
 	return Rect2(position - get_size() / 2, get_size())

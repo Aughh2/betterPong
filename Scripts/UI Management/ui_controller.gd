@@ -21,7 +21,7 @@ func setup() -> void:
 var current_ui_scene: Node = null
 
 func show_ui_scene(ui_scene: String) -> void:
-	Log.entry("[UiController]: show_ui_scene(%s) called.", 0)
+	Log.entry("[UiController]: show_ui_scene(%s) called." % ui_scene, 0)
 	if current_ui_scene:
 		current_ui_scene.queue_free()
 	

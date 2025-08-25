@@ -2,10 +2,18 @@ extends FieldStrategy
 class_name RectangularFieldStrategy
 
 func create_field(context: Dictionary) -> Field:
+	if not context.has("height") or not context.has("width"):
+		Log.entry("[RectangularFieldStrategy]: Context should include height and width keys with corresponding values.", 1)
+		pass
+	if context["height"] == null:
+		Log.entry("[RectangularFieldStrategy]: Context height is null.", 1)
+	if context["width"] == null:
+		Log.entry("[RectangularFieldStrategy]: Context width is null.", 1)
+		
 	var field = RectangularField.new()
-	Log.entry("[RectangularFieldStrategy]: context[height] = %f, context[width] = %f" % [context["height"], context["width"]], 0)
-	field.set_height(context["height"])
-	field.set_width(context["width"])
+	Log.entry("[RectangularFieldStrategy]: context = %s" % [str(context)], 0)
+	field.set_height(float(context["height"]))
+	field.set_width(float(context["width"]))
 	
 	# Create the sprite component
 	field.sprite_component = SpriteComponent.new(field)
@@ -21,7 +29,7 @@ func create_field(context: Dictionary) -> Field:
 	field.sprite_component.set_sprite_from_texture(tex)
 	
 	# Scale the sprite to match field size
-	field.sprite_component.scale = Vector2(
+	field.sprite_component.get_sprite().scale = Vector2(
 		context["width"],
 		context["height"]
 	)

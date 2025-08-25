@@ -11,34 +11,34 @@ func set_rectangle_shape(size: Vector2) -> void:
 	var shape := RectangleShape2D.new()
 	shape.size = size
 	_shape = shape
-	Log.entry("[CollisionShapeComponent] of parent [%s]: set rectangular shape." % parent.name, 0)
+	Log.entry("[CollisionShapeComponent] of parent [%s]: set rectangular shape." % [str(parent.name)], 0)
 	_update_shape_node()
 
 func set_circle_shape(radius: float) -> void:
 	var shape := CircleShape2D.new()
 	shape.radius = radius
 	_shape = shape
-	Log.entry("[CollisionShapeComponent] of parent [%s]: set circular shape." % parent.name, 0)
+	Log.entry("[CollisionShapeComponent] of parent [%s]: set circular shape." % [str(parent.name)], 0)
 	_update_shape_node()
 
 func _update_shape_node() -> void:
 	if _shape_node:
 		_shape_node.shape = _shape
-		Log.entry("[CollisionShapeComponent] of parent [%s]: shape node updated." % parent.name, 0)
+		Log.entry("[CollisionShapeComponent] of parent [%s]: shape node updated." % [str(parent.name)], 0)
 
 func _find_or_create_collision_shape_node() -> void:
 	# Try to find an existing CollisionShape2D child
 	for child in parent.get_children():
 		if child is CollisionShape2D:
 			_shape_node = child
-			Log.entry("[CollisionShapeComponent] of parent [%s]: found existing CollisionShape2D." % parent.name, 0)
+			Log.entry("[CollisionShapeComponent] of parent [%s]: found existing CollisionShape2D." % [str(parent.name)], 0)
 			return
 	
 	# None found, create new
 	_shape_node = CollisionShape2D.new()
 	_shape_node.shape = _shape
 	parent.add_child(_shape_node)
-	Log.entry("[CollisionShapeComponent] of parent [%s]: new CollisionShape2D created." % parent.name, 0)
+	Log.entry("[CollisionShapeComponent] of parent [%s]: new CollisionShape2D created." % [str(parent.get_name())], 0)
 
 func get_shape() -> Shape2D:
 	return _shape

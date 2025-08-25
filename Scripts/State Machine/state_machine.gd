@@ -5,10 +5,13 @@ class_name StateMachine
 var current_state: State
 
 func init(parent: Node) -> void:
+	Log.entry("[StateMachine]: Init called. Parent is %s" % [str(parent.name)], 0)
 	for child in get_children():
+		Log.entry("[StateMachine]: child name: %s" % [child.name], 0)
 		if child is State:
+			Log.entry("[StateMachine]: Child is state", 0)
 			child.parent = parent
-			Log.entry("%s parent set to: %s" % [child.name, parent.name], 0)
+			Log.entry("[StateMachine]: %s parent set to: %s" % [child.name, parent.name], 0)
 	change_state(initial_state)
 
 func change_state(new_state: State) -> void:

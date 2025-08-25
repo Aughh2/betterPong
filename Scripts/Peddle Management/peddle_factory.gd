@@ -15,8 +15,10 @@ func create_peddle(controller: String) -> Peddle:
 	peddle.speed_component.set_speed(200)
 	var control: PeddleController
 	if controller == "player1":
+		peddle.name = "player_peddle1"
 		control = HumanControllerP1.new()
 	if controller == "player2":
+		peddle.name = "player_peddle2"
 		control = HumanControllerP2.new()
 		
 	control.setup(peddle)

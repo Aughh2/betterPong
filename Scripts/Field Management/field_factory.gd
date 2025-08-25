@@ -16,8 +16,11 @@ var strategies := {
 	#return field
 
 func create_field(field_shape: String, context: Dictionary) -> Field:
+	Log.entry("[FieldFactory]: context = %s" % [str(context)], 0)
 	if strategies.has(field_shape):
 		var strategy: FieldStrategy = strategies[field_shape]
+		if context == null:
+			Log.entry("[FieldFactory]: context is null.", 0)
 		var field = strategy.create_field(context)
 		field.name = "Field"
 		return field

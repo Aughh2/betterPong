@@ -14,20 +14,23 @@ var results: Dictionary = {
 	"winner": Peddle
 }
 
+var state_machine: StateMachine
+
 func setup() -> void:
 	peddle_factory = PeddleFactory.new()
 	field_factory = FieldFactory.new()
 	border_factory = BorderFactory.new()
 	ball_factory = BallFactory.new()
+	
+	state_machine = get_node("State_machine")
+	if !state_machine:
+		Log.entry("[GameManager]: setup(): state_machine not found.", 1)
+	state_machine.init(self)
 
 
-var match_state_machine: StateMachine
 
 func enter():
 	Log.entry("[MatchState]: enter")
 	setup()
-	match_state_machine = StateMachine.new()
-	match_state_machine.initial_state = get_node("Initialization_state")
-	match_state_machine.init(self)
 	
 	
