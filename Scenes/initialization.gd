@@ -36,7 +36,7 @@ func enter():
 	field.setup()
 	parent.field = field
 	parent.add_child(field)
-	
+	field.add_child(Camera2D.new())
 
 	
 	var new_state = parent.state_machine.get_node("Countdown_state")

@@ -28,7 +28,6 @@ func _on_peddle_died(peddle: Peddle) -> void:
 
 
 func _process(delta: float) -> void:
-
 	if Input.is_action_pressed("pause"):
 		var next_state = parent.state_machine_get_node("Paused_state")
 		if !next_state:
