@@ -24,6 +24,7 @@ func setup() -> void:
 	var peddles = peddles_component.get_peddles_array()
 	peddles[0].position = Vector2(-_width / 2 + margin, _height / 2)
 	peddles[1].position = Vector2(_width / 2 - margin, _height / 2)
+	Log.entry("[RectangularField]: now peddles are supposed to be at their proper spots.", 0)
 	
 	if ball_spawner == null:
 		ball_spawner = BallSpawner.new(self)

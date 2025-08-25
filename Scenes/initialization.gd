@@ -31,14 +31,14 @@ func enter():
 	field.peddles_component.add_peddle(peddle1)
 	field.peddles_component.add_peddle(peddle2)
 	
-	
+	peddle1.setup()
+	peddle2.setup()
 	field.setup()
 	parent.field = field
 	parent.add_child(field)
 	
-	peddle1.setup()
-	peddle2.setup()
+
 	
-	var new_state = parent.get_node("Countdown_state")
+	var new_state = parent.state_machine.get_node("Countdown_state")
 	if new_state:
 		parent.state_machine.change_state(new_state)

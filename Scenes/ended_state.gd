@@ -3,4 +3,4 @@ class_name EndedState
 
 func enter() -> void:
 	Log.entry("[EndedState]: %s is a winner." % parent.results["winner"], 0)
-	GameManager.state_machine.change_state("MainMenuState")
+	GameManager.state_machine.change_state(GameManager.state_machine.initial_state)

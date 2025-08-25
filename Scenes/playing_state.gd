@@ -30,10 +30,10 @@ func _on_peddle_died(peddle: Peddle) -> void:
 func _process(delta: float) -> void:
 
 	if Input.is_action_pressed("pause"):
-		var next_state = parent.get_node("Paused_state")
+		var next_state = parent.state_machine_get_node("Paused_state")
 		if !next_state:
 			Log.entry("[PlayingState]: _process(): next state is null.", 1)
 			
-		parent.match_state_machine.change_state(next_state)
+		parent.state_machine.change_state(next_state)
 		
 	

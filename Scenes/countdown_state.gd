@@ -35,8 +35,8 @@ func _on_timer_timeout() -> void:
 func _on_countdown_finished() -> void:
 	# Handle what happens when countdown is over
 	# For example, exit this state:
-	var next_state = parent.get_node("Playing_state")
+	var next_state = parent.state_machine.get_node("Playing_state")
 	if !next_state:
 		Log.entry("[CountdownState]: _on_countdown_finished(): next_state(Playing_state) is null.", 1)
-	parent.match_state_machine.change_state(next_state)
+	parent.state_machine.change_state(next_state)
 	

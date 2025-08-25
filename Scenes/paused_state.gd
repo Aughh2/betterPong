@@ -17,7 +17,7 @@ func exit() -> void:
 
 func _process(delta: float) -> void:
 	if Input.is_action_pressed("pause"):
-		var next_state = parent.get_node("Playing_state")
+		var next_state = parent.state_machine.get_node("Playing_state")
 		if !next_state:
 			Log.entry("[Paused_state]: action pressed pause: playing state is null.", 1)
-		parent.match_state_machine.change_state(next_state)
+		parent.state_machine.change_state(next_state)
