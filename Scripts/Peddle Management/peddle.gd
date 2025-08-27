@@ -45,8 +45,7 @@ func _physics_process(delta: float) -> void:
 
 func _handle_movement(delta: float) -> void:
 	velocity = Vector2.ZERO # Peddle velocity vector
-	
-	velocity.y = _vertical_input # Is vertical input
+	velocity.y = _vertical_input * speed_component.get_speed()# Is vertical input
 	
 	move_and_slide()
 	
