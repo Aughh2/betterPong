@@ -22,6 +22,9 @@ func create_borders(field: Field) -> void:
 		"right": Vector2(half_width + BORDER_THICKNESS / 2, 0)
 	}
 
+	if !rect_field.borders_component:
+		rect_field.borders_component = BordersComponent.new(rect_field)
+
 	for side in borders.keys():
 		var border = Border.new()
 		border.name = "Border_" + side.capitalize()
@@ -34,8 +37,10 @@ func create_borders(field: Field) -> void:
 			"left", "right":
 				size = Vector2(BORDER_THICKNESS, height)
 		
+		if !border.collision_component:
+			border.collision_component = CollisionShapeComponent.new(border)
 		border.collision_component.set_rectangle_shape(size)
-		if !rect_field.borders_component:
-			var borders_component = BordersComponent.new(rect_field)
-			
+
+
+		# Add the border to the field’s borders component
 		rect_field.borders_component.add_border(border, true)

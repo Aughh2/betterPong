@@ -7,6 +7,9 @@ var _last_hitting_peddle: Peddle = null # A reference to a peddle that hit it la
 @export var collision_component: CollisionShapeComponent
 @export var damage_component: DamageComponent
 
+func _ready():
+	setup()
+	
 func setup():
 	if speed_component == null:
 		speed_component = SpeedComponent.new(self)
@@ -30,7 +33,10 @@ func _physics_process(delta: float) -> void:
 		velocity = velocity.bounce(collision.get_normal())
 		if collision.get_collider() is Peddle:
 			_last_hitting_peddle = collision.get_collider()
-			
+		if collision.get_collider() is Border:
+			var border = collision.get_collider() as Border
+			border.emit_signal("hit", self)
+
 func get_last_hitting_peddle() -> Peddle:
 	if _last_hitting_peddle:
 		return _last_hitting_peddle
