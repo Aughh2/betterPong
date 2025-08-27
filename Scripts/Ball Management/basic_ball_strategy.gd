@@ -11,7 +11,7 @@ func create_ball() -> Ball:
 	var damage_component = DamageComponent.new(ball)
 	
 	sprite_component.set_sprite_from_texture(basic_ball)
-	
+	collision_component.set_rectangle_shape(sprite_component.get_sprite_size())
 	speed_component.set_speed(10)
 	damage_component.set_damage(1)
 	

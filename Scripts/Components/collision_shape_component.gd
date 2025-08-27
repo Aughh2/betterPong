@@ -1,6 +1,12 @@
 extends Component
 class_name CollisionShapeComponent
 
+#####################################
+# HOW TO USE:
+# Before calling setup in parent:
+#	Make sure to set the correct shape2D, e.g. rectangle for paddle, circle for ball.
+#####################################
+
 var _shape_node: CollisionShape2D # In the scene tree
 var _shape: Shape2D
 

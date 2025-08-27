@@ -13,6 +13,8 @@ func create_peddle(controller: String) -> Peddle:
 	peddle.sprite_component.set_sprite_from_texture(basic_peddle)
 	peddle.speed_component = SpeedComponent.new(peddle)
 	peddle.speed_component.set_speed(200)
+	peddle.collision_component = CollisionShapeComponent.new(peddle)
+	peddle.collision_component.set_rectangle_shape(peddle.sprite_component.get_sprite_size())
 	var control: PeddleController
 	if controller == "player1":
 		peddle.name = "player_peddle1"
