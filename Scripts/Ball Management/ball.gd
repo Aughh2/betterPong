@@ -32,9 +32,11 @@ func _physics_process(delta: float) -> void:
 	if collision:
 		velocity = velocity.bounce(collision.get_normal())
 		if collision.get_collider() is Peddle:
+			Log.entry("[Ball]: Collided with peddle.", 0)
 			_last_hitting_peddle = collision.get_collider()
 		if collision.get_collider() is Border:
 			var border = collision.get_collider() as Border
+			Log.entry("[Ball]: Collided with border.", 0)
 			border.emit_signal("hit", self)
 
 func get_last_hitting_peddle() -> Peddle:

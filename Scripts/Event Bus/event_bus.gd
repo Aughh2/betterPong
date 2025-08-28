@@ -12,9 +12,13 @@ signal trigger_effect(category: String, ball: Ball)
 func setup() -> void:
 	trigger_effect.connect(_on_trigger_effect)
 	level_up.connect(_on_peddle_level_up)
+	peddle_died.connect(_on_peddle_died)
 	
 func _ready() -> void:
 	setup()
+
+func _on_peddle_died() -> void:
+	pass
 	
 func _on_trigger_effect(category: String, ball: Ball) -> void:
 	# Add visual and audio response

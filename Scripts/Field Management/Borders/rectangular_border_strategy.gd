@@ -1,7 +1,7 @@
 extends BorderStrategy
 class_name RectangularBorderStrategy
 
-const BORDER_THICKNESS := 10.0
+const BORDER_THICKNESS := 1.0
 
 func create_borders(field: Field) -> void:
 	if not field is RectangularField:

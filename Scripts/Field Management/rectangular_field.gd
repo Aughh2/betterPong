@@ -26,6 +26,13 @@ func setup() -> void:
 	peddles[1].position = Vector2(_width / 2 - margin, 0)
 	Log.entry("[RectangularField]: now peddles are supposed to be at their proper spots.", 0)
 	
+	var borders = borders_component.get_borders()
+	for border in borders:
+		if border.name == "Border_Left":
+			border.activate(peddles[0])
+		if border.name == "Border_Right":
+			border.activate(peddles[1])
+
 	if ball_spawner == null:
 		ball_spawner = BallSpawner.new(self)
 	ball_spawner.position = Vector2(_width / 2, _height / 2) # Center it and add debug gizmo

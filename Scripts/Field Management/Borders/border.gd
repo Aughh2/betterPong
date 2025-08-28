@@ -18,6 +18,7 @@ func _ready() -> void:
 	connect("hit", _on_border_hit)
 
 func activate(peddle: Peddle) -> void:
+	Log.entry("[Border] %s: activate called." % [str(self.name)], 0)
 	if peddle != null:
 		owning_peddle = peddle
 		_active = true
@@ -31,9 +32,11 @@ func deactivate() -> void:
 
 func _on_border_hit(ball: Ball) -> void:
 	if _active:
+		Log.entry("[Border]: active border hit.")
 		if !owning_peddle.health_component:
 			return
 		owning_peddle.health_component.take_damage(ball.damage_component.get_damage())
+	Log.entry("[Border]: border hit.")
 
 func is_active() -> bool:
 	if _active: return true
