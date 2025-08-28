@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 class_name BallSpawner
 
 @export var parent: Field
@@ -11,6 +11,7 @@ func _ready() -> void:
 	setup()
 
 func _init(owner: Node2D) -> void:
+	self.name = "Ball_spawner"
 	parent = owner
 	if !parent:
 		Log.entry(str("[BallSpawner] failed to cast parent to an entity."), 1)

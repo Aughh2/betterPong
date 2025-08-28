@@ -12,14 +12,14 @@ func setup() -> void:
 		borders_component = BordersComponent.new(self)
 	if sprite_component == null:
 		sprite_component = SpriteComponent.new(self)
-	if collision_component == null:
-		collision_component = CollisionShapeComponent.new(self)
+	#if collision_component == null:
+	#	collision_component = CollisionShapeComponent.new(self)
 	borders_component.setup()
 	sprite_component.setup()
-	collision_component.setup()
+	#collision_component.setup()
 	
 	# A rectangular field, setting rectangle shape manually.
-	collision_component.set_rectangle_shape(sprite_component.get_sprite_size())
+	#collision_component.set_rectangle_shape(sprite_component.get_sprite_size())
 
 	var peddles = peddles_component.get_peddles_array()
 	peddles[0].position = Vector2(-_width / 2 + margin, 0)
@@ -35,7 +35,7 @@ func setup() -> void:
 
 	if ball_spawner == null:
 		ball_spawner = BallSpawner.new(self)
-	ball_spawner.position = Vector2(_width / 2, _height / 2) # Center it and add debug gizmo
+	
 	
 	if orb_spawner == null:
 		orb_spawner = OrbSpawner.new(self)

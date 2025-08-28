@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 class_name OrbSpawner
 
 #####################
@@ -33,6 +33,7 @@ func _ready() -> void:
 
 
 func _init(owner: Node2D) -> void:
+	self.name = "Orb_spawner"
 	parent = owner
 	if !parent:
 		Log.entry(str("[OrbSpawner] failed to cast parent to an entity."), 1)

@@ -29,7 +29,10 @@ func setup():
 	
 func _physics_process(delta: float) -> void:
 	var collision = move_and_collide(velocity * delta)
+	
 	if collision:
+		print("Ball hit: ", collision.get_collider())
+		print("Collision normal: ", collision.get_normal())
 		velocity = velocity.bounce(collision.get_normal())
 		if collision.get_collider() is Peddle:
 			Log.entry("[Ball]: Collided with peddle.", 0)

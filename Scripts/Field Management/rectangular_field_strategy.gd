@@ -11,6 +11,7 @@ func create_field(context: Dictionary) -> Field:
 		Log.entry("[RectangularFieldStrategy]: Context width is null.", 1)
 		
 	var field = RectangularField.new()
+	field.position = Vector2(0,0)
 	Log.entry("[RectangularFieldStrategy]: context = %s" % [str(context)], 0)
 	field.set_height(float(context["height"]))
 	field.set_width(float(context["width"]))
@@ -33,9 +34,9 @@ func create_field(context: Dictionary) -> Field:
 		context["width"],
 		context["height"]
 	)
-	field.collision_component = CollisionShapeComponent.new(field)
-	field.collision_component.set_rectangle_shape(Vector2(
-		context["width"],
-		context["height"]
-	))
+	#field.collision_component = CollisionShapeComponent.new(field)
+	#field.collision_component.set_rectangle_shape(Vector2(
+	#	context["width"],
+	#	context["height"]
+	#))
 	return field
