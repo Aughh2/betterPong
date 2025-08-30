@@ -2,7 +2,7 @@ extends CanvasLayer
 class_name UIController
 
 @export var main_menu_scene: PackedScene
-@export var peddle_creation_scene: PackedScene
+@export var paddle_creation_scene: PackedScene
 @export var level_up_scene: PackedScene
 
 var ui_scenes: Dictionary
@@ -14,7 +14,7 @@ func _ready() -> void:
 func setup() -> void:
 	ui_scenes = {
 		"MainMenu": main_menu_scene,
-		"PeddleCreationMenu": peddle_creation_scene,
+		"PaddleCreationMenu": paddle_creation_scene,
 		"LevelUp": level_up_scene
 	}
 	

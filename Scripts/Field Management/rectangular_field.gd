@@ -4,7 +4,7 @@ class_name RectangularField
 var _width: float
 var _height: float
 #var _mesh: MeshInstance2D #Unused
-var margin = 25 #peddle to border margin
+var margin = 25 #paddle to border margin
 
 func setup() -> void:
 	super.setup()
@@ -21,17 +21,17 @@ func setup() -> void:
 	# A rectangular field, setting rectangle shape manually.
 	#collision_component.set_rectangle_shape(sprite_component.get_sprite_size())
 
-	var peddles = peddles_component.get_peddles_array()
-	peddles[0].position = Vector2(-_width / 2 + margin, 0)
-	peddles[1].position = Vector2(_width / 2 - margin, 0)
-	Log.entry("[RectangularField]: now peddles are supposed to be at their proper spots.", 0)
+	var paddles = paddles_component.get_paddles_array()
+	paddles[0].position = Vector2(-_width / 2 + margin, 0)
+	paddles[1].position = Vector2(_width / 2 - margin, 0)
+	Log.entry("[RectangularField]: now paddles are supposed to be at their proper spots.", 0)
 	
 	var borders = borders_component.get_borders()
 	for border in borders:
 		if border.name == "Border_Left":
-			border.activate(peddles[0])
+			border.activate(paddles[0])
 		if border.name == "Border_Right":
-			border.activate(peddles[1])
+			border.activate(paddles[1])
 
 	if ball_spawner == null:
 		ball_spawner = BallSpawner.new(self)

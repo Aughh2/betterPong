@@ -1,5 +1,5 @@
 extends Node
 class_name Command
 
-func execute(peddle: Peddle, data: Object = null) -> void:
+func execute(paddle: Paddle, data: Object = null) -> void:
 	pass

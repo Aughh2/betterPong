@@ -21,7 +21,7 @@ initial_state = NodePath("Main_menu_state")
 [node name="Main_menu_state" type="Node" parent="State_machine"]
 script = ExtResource("3_efn8y")
 
-[node name="Peddle_creation_state" type="Node" parent="State_machine"]
+[node name="Paddle_creation_state" type="Node" parent="State_machine"]
 
 [node name="Settings_state" type="Node" parent="State_machine"]
 

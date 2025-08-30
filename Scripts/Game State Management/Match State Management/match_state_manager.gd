@@ -1,16 +1,16 @@
 extends StateMachine
 class_name MatchStateManagerer
 
-# Composes a field, peddles, etc. Manages the flow of the match.
+# Composes a field, paddles, etc. Manages the flow of the match.
 var field: Field
 
-var peddle_factory: PeddleFactory
+var paddle_factory: PaddleFactory
 var field_factory: FieldFactory
 var border_factory: BorderFactory
 var ball_factory: BallFactory
 
 func setup() -> void:
-	peddle_factory = PeddleFactory.new()
+	paddle_factory = PaddleFactory.new()
 	field_factory = FieldFactory.new()
 	border_factory = BorderFactory.new()
 	ball_factory = BallFactory.new()

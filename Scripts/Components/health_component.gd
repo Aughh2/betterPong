@@ -30,7 +30,7 @@ func take_damage(amount: float) -> void:
 	Log.entry("[HealthComponent] of parent [%s]: damaged for %f." %[parent.name, amount], 0)
 	emit_signal("damaged", amount)
 	if _health == 0:
-		Log.entry("[HealthComponent] of parent [%s]: peddle died. Signal died emited." %[parent.name, amount], 0)
+		Log.entry("[HealthComponent] of parent [%s]: paddle died. Signal died emited." %[parent.name, amount], 0)
 		emit_signal("died")
 	
 	

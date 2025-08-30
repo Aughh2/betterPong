@@ -13,10 +13,10 @@ func _on_trigger_effect(category: String, ball: Ball) -> void:
 	_resolve(category, ball)
 
 func _resolve(category: String, ball: Ball) -> void:
-	var paddle = ball.get_last_hitting_peddle()
+	var paddle = ball.get_last_hitting_paddle()
 	var opponent_paddle
-	if parent.peddles_component:
-		opponent_paddle = parent.peddles_component.get_opponent_peddle(paddle)
+	if parent.paddles_component:
+		opponent_paddle = parent.paddles_component.get_opponent_paddle(paddle)
 	else:
 		opponent_paddle = null
 	if paddle:

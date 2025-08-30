@@ -4,7 +4,7 @@ class_name Field
 
 @export var parent: Node
 
-@export var peddles_component: PeddlesComponent
+@export var paddles_component: PaddlesComponent
 @export var balls_component: BallsComponent
 @export var borders_component: BordersComponent
 @export var sprite_component: SpriteComponent
@@ -21,13 +21,13 @@ func setup() -> void:
 		effect_resolver = EffectResolver.new(self)
 	if !effect_factory:
 		effect_factory = EffectFactory.new(self)
-	if !peddles_component:
-		peddles_component = PeddlesComponent.new(self)
+	if !paddles_component:
+		paddles_component = PaddlesComponent.new(self)
 	if !balls_component:
 		balls_component = BallsComponent.new(self)
 		
 	effect_factory.setup()
 	effect_resolver.setup()
-	peddles_component.setup()
+	paddles_component.setup()
 	balls_component.setup()
 	

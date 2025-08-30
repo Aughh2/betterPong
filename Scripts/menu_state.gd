@@ -18,7 +18,7 @@ func exit():
 	UiController.hide_ui_scene()
 
 func _on_new_game_pressed() -> void:
-	#var new_state = "Peddle_creation_state"
+	#var new_state = "Paddle_creation_state"
 	#if GameManager.get_node(new_state):
 	#	GameManager.change_state(new_state)
 	Log.entry("[MainMenuState]: _on_new_game_pressed() called.", 0)

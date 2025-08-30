@@ -8,5 +8,5 @@ class Params:
 		self.input = input
 		
 
-func execute(peddle: Peddle, data: Object = null) -> void:
-	peddle.move(data.input)
+func execute(paddle: Paddle, data: Object = null) -> void:
+	paddle.move(data.input)

@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Ball
 
-var _last_hitting_peddle: Peddle = null # A reference to a peddle that hit it last
+var _last_hitting_paddle: Paddle = null # A reference to a paddle that hit it last
 @export var speed_component: SpeedComponent
 @export var sprite_component: SpriteComponent
 @export var collision_component: CollisionShapeComponent
@@ -31,19 +31,17 @@ func _physics_process(delta: float) -> void:
 	var collision = move_and_collide(velocity * delta)
 	
 	if collision:
-		print("Ball hit: ", collision.get_collider())
-		print("Collision normal: ", collision.get_normal())
 		velocity = velocity.bounce(collision.get_normal())
-		if collision.get_collider() is Peddle:
-			Log.entry("[Ball]: Collided with peddle.", 0)
-			_last_hitting_peddle = collision.get_collider()
+		if collision.get_collider() is Paddle:
+			Log.entry("[Ball]: Collided with paddle.", 0)
+			_last_hitting_paddle = collision.get_collider()
 		if collision.get_collider() is Border:
 			var border = collision.get_collider() as Border
 			Log.entry("[Ball]: Collided with border.", 0)
 			border.emit_signal("hit", self)
 
-func get_last_hitting_peddle() -> Peddle:
-	if _last_hitting_peddle:
-		return _last_hitting_peddle
+func get_last_hitting_paddle() -> Paddle:
+	if _last_hitting_paddle:
+		return _last_hitting_paddle
 	else:
 		return null

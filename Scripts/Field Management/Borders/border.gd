@@ -5,7 +5,7 @@ signal hit(ball: Ball)
 
 var _active: bool = false
 
-var owning_peddle: Peddle = null
+var owning_paddle: Paddle = null
 
 @export var collision_component: CollisionShapeComponent
 
@@ -17,25 +17,25 @@ func _ready() -> void:
 
 	connect("hit", _on_border_hit)
 
-func activate(peddle: Peddle) -> void:
+func activate(paddle: Paddle) -> void:
 	Log.entry("[Border] %s: activate called." % [str(self.name)], 0)
-	if peddle != null:
-		owning_peddle = peddle
+	if paddle != null:
+		owning_paddle = paddle
 		_active = true
-		Log.entry("[Border] %s: activated for peddle %s" % [str(self.name), str(peddle.name)], 0)
+		Log.entry("[Border] %s: activated for paddle %s" % [str(self.name), str(paddle.name)], 0)
 	else:
-		Log.entry(get_class() + " peddle reference is null.")
+		Log.entry(get_class() + " paddle reference is null.")
 
 func deactivate() -> void:
 	_active = false
-	owning_peddle = null
+	owning_paddle = null
 
 func _on_border_hit(ball: Ball) -> void:
 	if _active:
 		Log.entry("[Border]: active border hit.")
-		if !owning_peddle.health_component:
+		if !owning_paddle.health_component:
 			return
-		owning_peddle.health_component.take_damage(ball.damage_component.get_damage())
+		owning_paddle.health_component.take_damage(ball.damage_component.get_damage())
 	Log.entry("[Border]: border hit.")
 
 func is_active() -> bool:
