@@ -4,7 +4,7 @@ class_name RectangularField
 var _width: float
 var _height: float
 #var _mesh: MeshInstance2D #Unused
-var margin = _width / 10 #peddle to border margin
+var margin = 25 #peddle to border margin
 
 func setup() -> void:
 	super.setup()

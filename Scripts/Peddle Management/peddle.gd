@@ -11,7 +11,11 @@ class_name Peddle
 
 @export var controller: PeddleController = null
 
+
 func setup() -> void:
+	self.motion_mode = MOTION_MODE_FLOATING
+	
+	
 	if health_component == null:
 		health_component = HealthComponent.new(self)
 	if level_component == null:
@@ -36,7 +40,7 @@ func setup() -> void:
 	health_component.damaged.connect(_on_peddle_damaged)
 	health_component.died.connect(_on_peddle_died)
 	level_component.level_upped.connect(_on_peddle_level_upped)
-
+	
 var _vertical_input: float
 
 func _physics_process(delta: float) -> void:
