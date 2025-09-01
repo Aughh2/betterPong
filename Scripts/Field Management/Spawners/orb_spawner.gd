@@ -7,10 +7,10 @@ class_name OrbSpawner
 
 @export var parent: Field
 
-@export var attack_orb: PackedScene
-@export var defense_orb: PackedScene
-@export var control_orb: PackedScene
-@export var experience_orb: PackedScene
+@export var attack_orb: PackedScene = preload("res://Scenes/Prefabs/Orbs/attack_orb.tscn")
+@export var defense_orb: PackedScene = preload("res://Scenes/Prefabs/Orbs/defense_orb.tscn")
+@export var control_orb: PackedScene = preload("res://Scenes/Prefabs/Orbs/control_orb.tscn")
+@export var experience_orb: PackedScene = preload("res://Scenes/Prefabs/Orbs/experience_orb.tscn")
 
 var orbs: Array[PackedScene] = []
 
@@ -31,7 +31,6 @@ func _ready() -> void:
 	orbs.append(control_orb)
 	orbs.append(experience_orb)
 
-
 func _init(owner: Node2D) -> void:
 	self.name = "Orb_spawner"
 	parent = owner
@@ -40,11 +39,11 @@ func _init(owner: Node2D) -> void:
 	parent.add_child(self)
 
 func setup():
-	if !parent:
+	if parent == null:
 		parent = get_parent()
 		if !(parent is Field):
 			Log.entry("[OrbSpawner]: setup() failed to cast parent as field. Make sure [OrbSpawner] is the scene child of Field.", 1)
-		
+	
 func start() -> void:
 	if _working == true:
 		Log.entry("[OrbSpawner]: start() called on already active.", 1)
@@ -71,18 +70,28 @@ func spawn_orb() -> void:
 		Log.entry("[OrbSpawner]: in spawn_orb(): parent: Field is null.", 1)
 		pass
 		
-	var shape = parent.collision_component.get_shape()
-	if !shape:
-		Log.entry("[OrbSpawner]: Failed to access parent: Field collision shape.", 1)
-	
 	var spawn_point = Vector2(0, 0)
-	if shape is RectangleShape2D:
-		spawn_point = random_point_in_rect_shape(shape)
+	if parent is RectangularField:
+		spawn_point = random_point_in_rect2(parent.sprite_component.get_sprite().get_rect())
+		
 	
-	var random_orb_scene = orbs[int(randi_range(0, orbs.size()))]
+	var random_orb_scene = orbs[int(randi_range(0, orbs.size() - 1))]
 	var random_orb = random_orb_scene.instantiate()
 	parent.orbs_component.add_orb(random_orb)
 
+func random_point_in_rect2(rect: Rect2) -> Vector2:
+	if rect.size.x <= 0 or rect.size.y <= 0:
+		Log.entry("[OrbSpawner]: Invalid Rect2: size must be positive -> %s" % [rect], 1)
+		return Vector2.ZERO
+	
+	var x = randf_range(rect.position.x, rect.position.x + rect.size.x)
+	var y = randf_range(rect.position.y, rect.position.y + rect.size.y)
+	var point = Vector2(x, y)
+	
+	Log.entry("[OrbSpawner]: Generated random point %s in rect %s" % [point, rect], 0)
+	return point
+
+	
 func random_point_in_rect_shape(collision_shape: RectangleShape2D) -> Vector2:
 	var extents = collision_shape.extents  # half-width, half-height
 	var x = randf_range(-extents.x, extents.x)

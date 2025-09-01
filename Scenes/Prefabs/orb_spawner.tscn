@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cunmv18klf26x"]
+
+[ext_resource type="Script" uid="uid://cfagyy2w1q68a" path="res://Scripts/Field Management/Spawners/orb_spawner.gd" id="1_ngy7k"]
+
+[node name="OrbSpawner" type="Node"]
+script = ExtResource("1_ngy7k")
+min_spawn_interval = 1
+max_spawn_interval = 5

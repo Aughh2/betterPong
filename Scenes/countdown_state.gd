@@ -20,7 +20,7 @@ func enter() -> void:
 	timer.start()
 
 func exit() -> void:
-	#parent.field.ball_spawner.spawn_ball("basicball")
+	parent.field.ball_spawner.spawn_ball("basicball")
 	pass
 	
 func _on_timer_timeout() -> void:

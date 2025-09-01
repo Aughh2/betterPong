@@ -10,8 +10,13 @@ func enter() -> void:
 	if !field:
 		Log.entry("[PlayingState]: field is null.", 1)
 		pass
-	field.ball_spawner.spawn_ball("basicball")
+	field.orb_spawner.start()
 
+func exit() -> void:
+	if !field:
+		Log.entry("[PlayingState]: exit(): field is null.", 1)
+	field.orb_spawner.stop()
+	
 func setup() -> void:
 	EventBus.paddle_died.connect(_on_paddle_died)
 
@@ -30,6 +35,7 @@ func _on_paddle_died(paddle: Paddle) -> void:
 
 
 func _process(delta: float) -> void:
+	
 	if Input.is_action_pressed("pause"):
 		var next_state = parent.state_machine.get_node("Paused_state")
 		if !next_state:
