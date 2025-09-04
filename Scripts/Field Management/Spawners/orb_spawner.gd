@@ -72,26 +72,38 @@ func spawn_orb() -> void:
 		
 	var spawn_point = Vector2(0, 0)
 	if parent is RectangularField:
-		spawn_point = random_point_in_rect2(parent.sprite_component.get_sprite().get_rect())
+		spawn_point = random_point_in_field(parent, parent.get_width(), parent.get_height())
 		
-	
+	Log.entry("[OrbSpawner]: spawn_orb(): spawn point is %s" % [str(spawn_point)])
 	var random_orb_scene = orbs[int(randi_range(0, orbs.size() - 1))]
 	var random_orb = random_orb_scene.instantiate()
+	random_orb.global_position = spawn_point
 	parent.orbs_component.add_orb(random_orb)
+	
+func random_point_in_field(field: Node2D, width: float, height: float) -> Vector2:
+	var half_w = width * 0.5
+	var half_h = height * 0.5
+	var local_x = randf_range(-half_w, half_w)
+	var local_y = randf_range(-half_h, half_h)
+	return field.to_global(Vector2(local_x, local_y))
 
-func random_point_in_rect2(rect: Rect2) -> Vector2:
-	if rect.size.x <= 0 or rect.size.y <= 0:
-		Log.entry("[OrbSpawner]: Invalid Rect2: size must be positive -> %s" % [rect], 1)
-		return Vector2.ZERO
-	
-	var x = randf_range(rect.position.x, rect.position.x + rect.size.x)
-	var y = randf_range(rect.position.y, rect.position.y + rect.size.y)
-	var point = Vector2(x, y)
-	
-	Log.entry("[OrbSpawner]: Generated random point %s in rect %s" % [point, rect], 0)
-	return point
+func random_point_in_sprite(sprite: Sprite2D) -> Vector2:
+	if not sprite.texture:
+		push_warning("Sprite2D has no texture!")
+		return sprite.global_position
 
-	
+	var tex_size = sprite.texture.get_size() * sprite.scale
+	var half_size = tex_size * 0.5
+
+	var x = randf_range(-half_size.x, half_size.x)
+	var y = randf_range(-half_size.y, half_size.y)
+	var local_point = Vector2(x, y)
+
+	var world_point = sprite.global_transform * local_point
+	print("Random point:", world_point, " | local:", local_point, " | tex_size:", tex_size)
+	return world_point
+
+
 func random_point_in_rect_shape(collision_shape: RectangleShape2D) -> Vector2:
 	var extents = collision_shape.extents  # half-width, half-height
 	var x = randf_range(-extents.x, extents.x)

@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b13imnnf546sp" path="res://Scenes/Prefabs/Orbs/control_orb_texture.tres" id="2_ow5cn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bi8uc"]
-size = Vector2(6, 6)
+size = Vector2(16, 16)
 
 [node name="ControlEffectOrb" type="Area2D"]
 script = ExtResource("1_jr6m4")
