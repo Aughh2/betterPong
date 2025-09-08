@@ -8,5 +8,6 @@ class Params:
 		self.input = input
 		
 
-func execute(paddle: Paddle, data: Object = null) -> void:
-	paddle.move(data.input)
+func execute(actor: Node, data: Object = null) -> void:
+	if actor is Paddle:
+		actor.move(data.input)

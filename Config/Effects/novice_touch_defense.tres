@@ -1,0 +1,9 @@
+id = "defense_novice_touch"
+category = "defense"
+level = 1
+scaling = "linear"
+base_value = 1.0
+scale_per_skill = 1.5
+target_filter = ["paddle"]
+visual_scene = ExtResource("res://scenes/effects/novice_touch.tscn")
+effect_script = ExtResource("res://scripts/effects/novice_touch.gd")
